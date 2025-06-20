@@ -2,7 +2,7 @@
 
 This repository contains the official website for the Dougherty Valley High School Jazz Club, built with React and Vite.
 
-**Live Site:** [https://cooolersam.github.io/Jazz-Club-React-App/](https://cooolersam.github.io/Jazz-Club-React-App/)
+**Live Site:** [https://DVHS-Jazz-Club.github.io](https://DVHS-Jazz-Club.github.io)
 
 ## About This Project
 
@@ -29,7 +29,7 @@ The most common task will be updating the gallery. For other content like office
 
 ### Managing the Gallery (Easy Method)
 
-1.  **Access the Admin Panel**: Navigate to **[https://cooolersam.github.io/Jazz-Club-React-App/#/admin](https://cooolersam.github.io/Jazz-Club-React-App/#/admin)**.
+1.  **Access the Admin Panel**: Navigate to **[https://DVHS-Jazz-Club.github.io/#/admin](https://DVHS-Jazz-Club.github.io/#/admin)**.
 2.  **Enter Password**: The password is `jazzisawesome`.
 3.  **Make Changes**:
     - Click **"Add New Gallery Item"** to open the form for a new image or video.
@@ -51,8 +51,8 @@ Follow these steps if you want to run the project locally or deploy a new versio
 
 1.  **Clone the repository**:
     ```sh
-    git clone https://github.com/Cooolersam/Jazz-Club-React-App.git
-    cd Jazz-Club-React-App
+    git clone https://github.com/DVHS-Jazz-Club/DVHS-Jazz-Club.github.io.git
+    cd DVHS-Jazz-Club.github.io
     ```
 2.  **Install dependencies**:
     ```sh
