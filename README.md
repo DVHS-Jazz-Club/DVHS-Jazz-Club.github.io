@@ -27,7 +27,21 @@ This project is a modern, dynamic single-page application created to showcase th
 
 The most common task will be updating the gallery. For other content like officer lists or performance details, you can edit the `public/data.json` file directly.
 
+### Adding a New Image to the Site
+
+Before you can add an image to the gallery, you must first upload the image file to the repository.
+
+1.  **Navigate to the Images Folder**: Go to the `public/images` folder in the GitHub repository. **[Click here for a direct link.](https://github.com/DVHS-Jazz-Club/DVHS-Jazz-Club.github.io/tree/main/public/images)**
+2.  **Upload Your Image**:
+    - Click the **Add file** button in the top right.
+    - Select **Upload files**.
+    - Drag and drop your image file (e.g., `my-photo.jpg`) onto the page.
+    - Click the **Commit changes** button.
+3.  **Determine the Image URL**: The URL for your image is `https://DVHS-Jazz-Club.github.io/images/YOUR-FILE-NAME.jpg`. Make sure to replace `YOUR-FILE-NAME.jpg` with the name of the file you just uploaded. Copy this URL.
+
 ### Managing the Gallery (Easy Method)
+
+Once you have your image URL, you can add the item to the gallery.
 
 1.  **Access the Admin Panel**: Navigate to **[https://DVHS-Jazz-Club.github.io/#/admin](https://DVHS-Jazz-Club.github.io/#/admin)**.
 2.  **Enter Password**: The password is `jazzisawesome`.
@@ -39,7 +53,7 @@ The most common task will be updating the gallery. For other content like office
     - After making your changes, scroll to the "Save Your Changes" section.
     - Click the **"Copy Updated JSON"** button. This copies all the site data to your clipboard.
 5.  **Apply Changes to the Code**:
-    - In your code editor, open the `public/data.json` file.
+    - In your code editor (like VS Code), open the `public/data.json` file.
     - Select all the text in the file and paste the content from your clipboard.
 6.  **Deploy**: Follow the deployment instructions below to make your changes live.
 
