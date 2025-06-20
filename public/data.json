@@ -1,0 +1,146 @@
+{
+  "heroImages": [
+    "https://images.unsplash.com/photo-1511192336575-5a79af67d629?auto=format&fit=crop&w=1920&q=80",
+    "https://images.unsplash.com/photo-1520442244661-634952aaa349?auto=format&fit=crop&w=1920&q=80",
+    "https://images.unsplash.com/photo-1558307049-50993a456de7?auto=format&fit=crop&w=1920&q=80",
+    "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?auto=format&fit=crop&w=1920&q=80"
+  ],
+  "officers": {
+    "president": "Samarth Rao",
+    "vicePresident": "Iris",
+    "conductor": "Mia",
+    "secretary": "Robert",
+    "treasurer": "Marlon",
+    "prOfficer": "Vishnu",
+    "facultyAdvisor": "Teri Musiel"
+  },
+  "performances": [
+    {
+      "day": "15",
+      "month": "JUL",
+      "title": "Spring Jazz Concert",
+      "time": "7:00 PM - 9:00 PM",
+      "location": "DVHS Auditorium",
+      "description": "Our biggest performance of the year! Join us for an evening of jazz classics and original compositions.",
+      "tags": ["Major Event", "All Welcome"],
+      "year": 2025
+    },
+    {
+      "day": "18",
+      "month": "OCT",
+      "title": "Performance at Oakmont Senior Center",
+      "time": "2:00 PM - 3:00 PM",
+      "location": "Oakmont Senior Living",
+      "description": "An afternoon of jazz classics for the residents. We love these intimate performances and sharing music across generations.",
+      "tags": ["Community Event", "Private Performance"],
+      "year": 2024
+    },
+    {
+      "day": "20",
+      "month": "DEC",
+      "title": "Performance at Oakmont Senior Center",
+      "time": "2:00 PM - 3:00 PM",
+      "location": "Gamer Senior Living",
+      "description": "An afternoon of jazz classics for the residents. We love these intimate performances and sharing music across generations.",
+      "tags": ["Community Event", "Private Performance"],
+      "year": 2024
+    },
+    {
+      "day": "05",
+      "month": "NOV",
+      "title": "DVHS Quad Jam Session",
+      "time": "Lunchtime",
+      "location": "School Quad",
+      "description": "Join us for a casual lunchtime performance in the quad. We'll be playing some upbeat tunes to brighten your day.",
+      "tags": ["School Event", "All Students Welcome"],
+      "year": 2024
+    },
+    {
+      "day": "12",
+      "month": "DEC",
+      "title": "Wellness Center Performance",
+      "time": "12:30 PM - 1:30 PM",
+      "location": "DVHS Wellness Center",
+      "description": "Playing some smooth, relaxing jazz to support the school's wellness events. Music is good for the soul!",
+      "tags": ["Wellness Event", "School Community"],
+      "year": 2024
+    },
+    {
+      "day": "25",
+      "month": "JAN",
+      "title": "Winter Arts Festival",
+      "time": "6:00 PM - 8:00 PM",
+      "location": "School Theater",
+      "description": "A showcase of all the arts programs at DVHS. We'll be opening the show with some exciting new pieces.",
+      "tags": ["School Event", "All Welcome"],
+      "year": 2025
+    },
+    {
+      "day": "14",
+      "month": "FEB",
+      "title": "Valentine's Day Grams",
+      "time": "All Day",
+      "location": "Roaming",
+      "description": "Our small ensembles will be delivering musical Valentine's Day grams throughout the school.",
+      "tags": ["Fundraiser", "School Event"],
+      "year": 2025
+    },
+    {
+      "day": "20",
+      "month": "MAR",
+      "title": "Guest Artist Workshop",
+      "time": "4:00 PM - 6:00 PM",
+      "location": "P124 (Band Room)",
+      "description": "A special workshop and jam session with a local professional jazz musician. Open to all club members.",
+      "tags": ["Workshop", "Club Members"],
+      "year": 2025
+    }
+  ],
+  "gallery": [
+    {
+      "type": "image",
+      "category": "recent",
+      "url": "images/placeholder.svg",
+      "title": "Fall Concert 2024",
+      "performance": "Fall Concert 2024",
+      "year": 2024
+    },
+    {
+      "type": "image",
+      "category": "recent",
+      "url": "images/placeholder.svg",
+      "title": "Jazz Festival Fun",
+      "performance": "Winter Arts Festival",
+      "year": 2025
+    },
+    {
+      "type": "image",
+      "category": "performances",
+      "url": "images/placeholder.svg",
+      "title": "Our Sax Section",
+      "performance": "Winter Arts Festival",
+      "year": 2025
+    },
+    {
+      "type": "video",
+      "category": "performances",
+      "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      "title": "Example YouTube Video",
+      "year": 2024
+    },
+     {
+      "type": "video",
+      "category": "rehearsals",
+      "embedUrl": "https://drive.google.com/file/d/1-g2_n6S_y4J2IuVpAgR_z2gQPm09vO_d/preview",
+      "title": "Example Google Drive Video",
+      "year": 2024
+    },
+    {
+      "type": "image",
+      "category": "members",
+      "url": "images/placeholder.svg",
+      "title": "Club Photo",
+      "year": 2024
+    }
+  ]
+} 
