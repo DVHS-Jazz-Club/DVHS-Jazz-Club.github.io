@@ -1,4 +1,4 @@
-const About = () => {
+const About = ({ aboutImage }) => {
     return (
         <section id="about" className="about">
             <div className="container">
@@ -30,10 +30,14 @@ const About = () => {
                         </div>
                     </div>
                     <div className="about-image">
-                        <div className="image-placeholder">
-                            <i className="fas fa-image"></i>
-                            <p>Jazz Club Rehearsal</p>
-                        </div>
+                        {aboutImage ? (
+                            <img src={aboutImage} alt="Dougherty Valley Jazz Club" />
+                        ) : (
+                            <div className="image-placeholder">
+                                <i className="fas fa-image"></i>
+                                <p>Jazz Club Rehearsal</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

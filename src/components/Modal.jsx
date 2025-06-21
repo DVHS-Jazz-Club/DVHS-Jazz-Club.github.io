@@ -3,41 +3,37 @@ const Modal = ({ show, onClose, title, images }) => {
         return null;
     }
 
-    const renderGalleryItem = (item) => {
-        if (item.type === 'video') {
-            return (
-                <div className="gallery-item" key={item.url}>
-                    <div className="video-container">
-                        <iframe
-                            src={item.url}
-                            title={item.title}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen>
-                        </iframe>
-                    </div>
-                </div>
-            );
-        }
-        
-        // Default to photo
-        return (
-            <div className="gallery-item" key={item.url}>
-                <img src={item.url} alt={item.title} />
-            </div>
-        );
-    };
+    const mediaItems = Array.isArray(images) ? images : [];
 
     return (
         <div className="modal-overlay active" onClick={onClose}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
                 <button className="modal-close-btn" onClick={onClose}>&times;</button>
-                <h3 className="modal-title">{title} - Gallery</h3>
-                <div id="modal-gallery-grid" className="modal-gallery-grid">
-                    {images && images.length > 0 ? (
-                        images.map(item => renderGalleryItem(item))
+                <h3 className="modal-title">{title}</h3>
+                <div className="modal-gallery-grid">
+                    {mediaItems.length > 0 ? (
+                        mediaItems.map((mediaUrl, index) => {
+                            const isVideo = mediaUrl.includes('youtube.com/embed') || mediaUrl.includes('drive.google.com/file');
+                            return (
+                                <div key={index} className="gallery-item">
+                                    {isVideo ? (
+                                        <div className="video-container">
+                                            <iframe
+                                                src={mediaUrl}
+                                                title={`Media ${index + 1}`}
+                                                frameBorder="0"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                allowFullScreen
+                                            ></iframe>
+                                        </div>
+                                    ) : (
+                                        <img src={mediaUrl} alt={`Gallery item ${index + 1}`} />
+                                    )}
+                                </div>
+                            );
+                        })
                     ) : (
-                        <p>No images available for this performance yet.</p>
+                        <p>No images or videos available for this performance.</p>
                     )}
                 </div>
             </div>

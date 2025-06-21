@@ -1,3 +1,5 @@
+import SmoothScrollLink from './SmoothScrollLink';
+
 const Footer = () => {
     return (
         <footer className="footer">
@@ -16,16 +18,13 @@ const Footer = () => {
                     <div className="footer-section">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#about">About Us</a></li>
-                            <li><a href="#performances">Performances</a></li>
-                            <li><a href="#join">Get Involved</a></li>
-                            <li><a href="#contact">Contact</a></li>
+                            <li><SmoothScrollLink to="#home">Home</SmoothScrollLink></li>
+                            <li><SmoothScrollLink to="#about">About Us</SmoothScrollLink></li>
+                            <li><SmoothScrollLink to="#performances">Performances</SmoothScrollLink></li>
+                            <li><SmoothScrollLink to="#join">Get Involved</SmoothScrollLink></li>
+                            <li><SmoothScrollLink to="#contact">Details</SmoothScrollLink></li>
+                            <li><a href="/#/admin" className="admin-link-footer">Admin</a></li>
                         </ul>
-                    </div>
-                    <div className="footer-section">
-                        <h4>Contact Info</h4>
-                        <p>Fridays at Lunch, P124 (Band Room)</p>
                     </div>
                 </div>
             </div>

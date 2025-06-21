@@ -45,18 +45,18 @@ const Join = () => {
                         <h3>Join our Community</h3>
                         <p>Connect with us on our platforms!</p>
                         <div className="social-links-contact">
-                            <a href="https://discord.gg/ap65wjgm4k" target="_blank" rel="noopener noreferrer" className="social-btn discord">
+                        <a href="https://discord.gg/ap65wjgm4k" target="_blank" rel="noopener noreferrer" className="social-btn discord">
                                 <i className="fab fa-discord"></i>
                                 <span>Join our Discord Server</span>
-                            </a>
-                            <a href="https://www.instagram.com/dvhsjazzclub" target="_blank" rel="noopener noreferrer" className="social-btn instagram">
+                        </a>
+                        <a href="https://www.instagram.com/dvhsjazzclub" target="_blank" rel="noopener noreferrer" className="social-btn instagram">
                                 <i className="fab fa-instagram"></i>
                                 <span>Follow on Instagram</span>
-                            </a>
-                            <a href="mailto:dvjazzclub@gmail.com" className="social-btn email">
+                        </a>
+                        <a href="mailto:dvjazzclub@gmail.com" className="social-btn email">
                                 <i className="fas fa-envelope"></i>
                                 <span>Email the Club</span>
-                            </a>
+                        </a>
                         </div>
                         <p className="contact-email-display">Or, email us directly at: <strong>dvjazzclub@gmail.com</strong></p>
                     </div>

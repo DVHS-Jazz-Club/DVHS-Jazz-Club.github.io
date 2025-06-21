@@ -15,7 +15,6 @@ import Admin from './components/Admin';
 
 function App() {
   const [data, setData] = useState(null);
-  const [sortedPerformances, setSortedPerformances] = useState({ upcoming: [], past: [] });
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({ title: '', images: [] });
 
@@ -24,40 +23,15 @@ function App() {
       .then(response => response.json())
       .then(jsonData => {
         setData(jsonData);
-        
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-
-        const upcoming = [];
-        const past = [];
-        const monthMap = { JAN: 0, FEB: 1, MAR: 2, APR: 3, MAY: 4, JUN: 5, JUL: 6, AUG: 7, SEP: 8, OCT: 9, NOV: 10, DEC: 11 };
-
-        jsonData.performances.forEach(perf => {
-            const perfDate = new Date(perf.year, monthMap[perf.month.toUpperCase()], perf.day);
-            if (perfDate >= today) {
-                upcoming.push(perf);
-            } else {
-                past.push(perf);
-            }
-        });
-        
-        past.sort((a, b) => {
-            const dateA = new Date(a.year, monthMap[a.month.toUpperCase()], a.day);
-            const dateB = new Date(b.year, monthMap[b.month.toUpperCase()], b.day);
-            return dateB - dateA;
-        });
-
-        setSortedPerformances({ upcoming, past });
       });
   }, []);
 
-  const handlePerformanceClick = (title) => {
-    const performance = data.performances.find(p => p.title === title);
-    if (performance && data.gallery) {
-      const performanceImages = data.gallery.filter(item => item.performance === title);
-      setModalContent({ title, images: performanceImages });
-      setShowModal(true);
-    }
+  const handlePerformanceClick = (performance) => {
+    setModalContent({ 
+      title: performance.title, 
+      images: performance.media || [] 
+    });
+    setShowModal(true);
   };
 
   if (!data) {
@@ -66,31 +40,35 @@ function App() {
   
   const MainSite = () => (
     <>
-      <Navbar />
       <Hero heroImages={data.heroImages} />
-      <About />
+      <About aboutImage={data.aboutImage} />
       <Performances 
-        upcoming={sortedPerformances.upcoming} 
-        past={sortedPerformances.past}
+        upcoming={data.performances.upcoming || []} 
+        past={data.performances.past || []}
         onPerformanceClick={handlePerformanceClick} 
       />
       <Join />
       <Contact officers={data.officers} />
+    </>
+  );
+
+  return (
+    <>
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<MainSite />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      </main>
       <Footer />
-      <Modal 
-        show={showModal} 
+      <Modal
+        show={showModal}
         onClose={() => setShowModal(false)}
         title={modalContent.title}
         images={modalContent.images}
       />
     </>
-  );
-
-  return (
-    <Routes>
-      <Route path="/" element={<MainSite />} />
-      <Route path="/admin" element={<Admin />} />
-    </Routes>
   );
 }
 

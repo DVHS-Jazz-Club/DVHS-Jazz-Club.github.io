@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import SmoothScrollLink from './SmoothScrollLink';
 
 const Hero = ({ heroImages }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -42,8 +43,8 @@ const Hero = ({ heroImages }) => {
                 <p className="hero-subtitle">Where Music Meets Passion</p>
                 <p className="hero-description">Join our talented student musicians as we explore the world of jazz, perform amazing music, and create unforgettable experiences together.</p>
                 <div className="hero-buttons">
-                    <a href="#performances" className="btn btn-primary">View Performances</a>
-                    <a href="#join" className="btn btn-secondary">Join The Club</a>
+                    <SmoothScrollLink to="#performances" className="btn btn-primary">View Performances</SmoothScrollLink>
+                    <SmoothScrollLink to="#join" className="btn btn-secondary">Join The Club</SmoothScrollLink>
                 </div>
             </div>
             <div className="hero-overlay"></div>
