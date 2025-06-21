@@ -1,6 +1,6 @@
 const PerformanceCard = ({ perf, onClick }) => {
     return (
-        <div className="performance-card" onClick={() => onClick(perf.title)}>
+        <div className="performance-card" onClick={() => onClick(perf)}>
             <div className="performance-date">
                 <span className="day">{perf.day}</span>
                 <span className="month">{perf.month}</span>
