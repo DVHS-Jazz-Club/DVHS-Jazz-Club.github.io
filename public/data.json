@@ -22,7 +22,10 @@
       "time": "7:00 PM - 9:00 PM",
       "location": "DVHS Auditorium",
       "description": "Our biggest performance of the year! Join us for an evening of jazz classics and original compositions.",
-      "tags": ["Major Event", "All Welcome"],
+      "tags": [
+        "Major Event",
+        "All Welcome"
+      ],
       "year": 2025
     },
     {
@@ -32,7 +35,10 @@
       "time": "2:00 PM - 3:00 PM",
       "location": "Oakmont Senior Living",
       "description": "An afternoon of jazz classics for the residents. We love these intimate performances and sharing music across generations.",
-      "tags": ["Community Event", "Private Performance"],
+      "tags": [
+        "Community Event",
+        "Private Performance"
+      ],
       "year": 2024
     },
     {
@@ -42,7 +48,10 @@
       "time": "2:00 PM - 3:00 PM",
       "location": "Gamer Senior Living",
       "description": "An afternoon of jazz classics for the residents. We love these intimate performances and sharing music across generations.",
-      "tags": ["Community Event", "Private Performance"],
+      "tags": [
+        "Community Event",
+        "Private Performance"
+      ],
       "year": 2024
     },
     {
@@ -52,7 +61,10 @@
       "time": "Lunchtime",
       "location": "School Quad",
       "description": "Join us for a casual lunchtime performance in the quad. We'll be playing some upbeat tunes to brighten your day.",
-      "tags": ["School Event", "All Students Welcome"],
+      "tags": [
+        "School Event",
+        "All Students Welcome"
+      ],
       "year": 2024
     },
     {
@@ -62,7 +74,10 @@
       "time": "12:30 PM - 1:30 PM",
       "location": "DVHS Wellness Center",
       "description": "Playing some smooth, relaxing jazz to support the school's wellness events. Music is good for the soul!",
-      "tags": ["Wellness Event", "School Community"],
+      "tags": [
+        "Wellness Event",
+        "School Community"
+      ],
       "year": 2024
     },
     {
@@ -72,7 +87,10 @@
       "time": "6:00 PM - 8:00 PM",
       "location": "School Theater",
       "description": "A showcase of all the arts programs at DVHS. We'll be opening the show with some exciting new pieces.",
-      "tags": ["School Event", "All Welcome"],
+      "tags": [
+        "School Event",
+        "All Welcome"
+      ],
       "year": 2025
     },
     {
@@ -82,7 +100,10 @@
       "time": "All Day",
       "location": "Roaming",
       "description": "Our small ensembles will be delivering musical Valentine's Day grams throughout the school.",
-      "tags": ["Fundraiser", "School Event"],
+      "tags": [
+        "Fundraiser",
+        "School Event"
+      ],
       "year": 2025
     },
     {
@@ -92,7 +113,10 @@
       "time": "4:00 PM - 6:00 PM",
       "location": "P124 (Band Room)",
       "description": "A special workshop and jam session with a local professional jazz musician. Open to all club members.",
-      "tags": ["Workshop", "Club Members"],
+      "tags": [
+        "Workshop",
+        "Club Members"
+      ],
       "year": 2025
     }
   ],
@@ -128,7 +152,7 @@
       "title": "Example YouTube Video",
       "year": 2024
     },
-     {
+    {
       "type": "video",
       "category": "rehearsals",
       "embedUrl": "https://drive.google.com/file/d/1-g2_n6S_y4J2IuVpAgR_z2gQPm09vO_d/preview",
@@ -141,6 +165,14 @@
       "url": "images/placeholder.svg",
       "title": "Club Photo",
       "year": 2024
+    },
+    {
+      "type": "image",
+      "category": "performance",
+      "url": "https://DVHS-Jazz-Club.github.io/images/thethinker.jpg",
+      "title": "Testing image",
+      "performance": "Winter arts festival",
+      "year": "2025"
     }
   ]
-} 
+}
