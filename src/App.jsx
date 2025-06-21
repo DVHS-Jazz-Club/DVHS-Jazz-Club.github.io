@@ -19,7 +19,7 @@ function App() {
   const [modalContent, setModalContent] = useState({ title: '', images: [] });
 
   useEffect(() => {
-    fetch('/data.json')
+    fetch('data.json')
       .then(response => response.json())
       .then(jsonData => {
         setData(jsonData);
