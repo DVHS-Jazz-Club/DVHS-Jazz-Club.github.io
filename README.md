@@ -21,7 +21,7 @@ That's it! Changes committed to the `main` branch are automatically deployed.
 ### Step 1: Log In to the Admin Panel
 
 1.  **Access the Admin Panel**: Navigate to the **[Admin Panel](https://DVHS-Jazz-Club.github.io/#/admin)**.
-2.  **Enter Password**: The password is `jazzisawesome`.
+2.  **Enter Password**: Ask a fellow officer for the admin password.
 
 ### Step 2: Manage Website Content
 
