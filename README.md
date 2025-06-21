@@ -8,48 +8,53 @@ This repository contains the official website for the Dougherty Valley High Scho
 
 ## How to Update The Website
 
-This guide is for club officers. The most common tasks are adding images to the gallery and updating event or officer information.
+This guide is for club officers. All website content—including performances, images, and officer names—is managed through a user-friendly admin panel.
 
-### Step 1: Add a New Image or Video
+### The 3-Step Process
 
-Before you can add new media to the gallery, you must upload the file to this repository.
+1.  **Make changes in the Admin Panel.**
+2.  **Copy the generated data.**
+3.  **Paste it into the `data.json` file on GitHub.**
 
-1.  **Navigate to the Images Folder**: Go to the `public/images` folder in the GitHub repository. **[Click here for a direct link.](https://github.com/DVHS-Jazz-Club/DVHS-Jazz-Club.github.io/tree/main/public/images)**
-2.  **Upload Your File**:
-    - Click the **Add file** button and select **Upload files**.
-    - Drag and drop your image file (e.g., `my-photo.jpg`) onto the page.
-    - Click the **Commit changes** button.
-3.  **Get the Public URL**: The URL for your image is predictable. For a file named `my-photo.jpg`, the URL is: `https://DVHS-Jazz-Club.github.io/images/my-photo.jpg`. **Copy this URL for the next step.**
+That's it! Changes committed to the `main` branch are automatically deployed.
 
-*Note: For videos, it is highly recommended to upload them to YouTube and use the "Embed" link.*
-
-### Step 2: Update the Website Content
-
-This website is managed by a single file: `public/data.json`. The easiest way to update this file is through the Admin Panel.
+### Step 1: Log In to the Admin Panel
 
 1.  **Access the Admin Panel**: Navigate to the **[Admin Panel](https://DVHS-Jazz-Club.github.io/#/admin)**.
 2.  **Enter Password**: The password is `jazzisawesome`.
-3.  **Make Changes**:
-    - Use the form-based **Gallery Management** tool to add, edit, or delete gallery items using the URL from Step 1.
-    - For other changes (like updating officer names or performance details), you will need to edit the raw JSON in the text area at the bottom of the admin page. Be careful with syntax.
-4.  **Save and Copy the New Data**:
-    - After making changes, click the **"Copy Updated JSON"** button. This copies the entire website's data to your clipboard.
-5.  **Commit the Changes to the Repository**:
-    - Back on GitHub, navigate to the `public/data.json` file. **[Click here for a direct link.](https://github.com/DVHS-Jazz-Club/DVHS-Jazz-Club.github.io/blob/main/public/data.json)**
-    - Click the **pencil icon** to edit the file.
-    - Select all the text in the file and **paste** the new data you copied from the admin panel.
-    - Scroll down and click the **"Commit changes"** button.
 
-### Step 3: Deploy the Website
+### Step 2: Manage Website Content
 
-Making a change in the code doesn't automatically make it live. You need to run the deployment command. This is a more technical step. If you are not comfortable with the command line, ask the club President or a more technical member for help.
+The admin panel is organized into sections that match the website's content.
 
-1. Follow the "Running Locally" instructions below to set up the project on your computer.
-2. Once set up, run this single command in your terminal:
-   ```sh
-   npm run deploy
-   ```
-This will build the website and push the changes to the live server. The site will be updated within a few minutes.
+#### Managing Performances
+- **Upcoming & Past Performances**: Add, edit, or delete performances in their respective sections.
+- **Editing**: Click "Edit" to open a form where you can change details like the date, time, location, and description. You can also assign images to a performance from the Image Library.
+
+#### Managing Images
+- **The Image Library**: This is the central hub for all website images. Forget manually uploading to GitHub—do it all from here.
+- **Uploading**: Click **"Upload New Image"**. This uses a third-party service (`imgbb.com`) to host the image, so you don't need to worry about repository space.
+- **Naming**: Images are identified by name. You can rename them at any time for clarity.
+- **Assigning Images**: In the "Page Content Assignment" section, simply click on an image's name to assign it to the "About Us" page or the "Homepage Hero Slideshow".
+
+### Step 3: Save and Commit Your Changes
+
+This is the most important step. Your changes are not live until you save them to the repository.
+
+1.  **Copy the New Data**:
+    - At the bottom of the admin panel, you'll find a section called **"Save Your Changes"**.
+    - Click the large **"Copy Updated JSON"** button. This copies all of your new content to the clipboard.
+2.  **Update `data.json` on GitHub**:
+    - Open the `public/data.json` file in the repository. **[Click here for a direct link.](https://github.com/DVHS-Jazz-Club/DVHS-Jazz-Club.github.io/blob/main/public/data.json)**
+    - Click the **pencil icon** (Edit this file) in the top right.
+    - Select all the existing text in the file (`Ctrl+A` or `Cmd+A`) and **delete it**.
+    - **Paste** (`Ctrl+V` or `Cmd+V`) the new data you copied from the admin panel.
+3.  **Commit the Changes**:
+    - Scroll to the bottom of the page.
+    - Add a brief, descriptive commit message (e.g., "Update upcoming concert details").
+    - Click the green **"Commit changes"** button.
+
+Your changes will be live on the website within a few minutes.
 
 ---
 
@@ -57,26 +62,27 @@ This will build the website and push the changes to the live server. The site wi
 
 ### About This Project
 
-This project is a modern, dynamic single-page application created to showcase the club's activities, upcoming performances, and contact information. It is designed to be easily updated by club officers, even those with limited coding experience, through a user-friendly admin panel.
+This project is a modern, dynamic single-page application created with React and Vite. It is designed to be easily updated by non-technical club officers through a comprehensive, user-friendly admin panel.
 
-### Features
+### Key Data Structures (`data.json`)
 
-- **Dynamic Content**: All site content (performances, gallery, officers) is loaded from a central `data.json` file.
-- **Admin Panel**: A password-protected route at `/#/admin` allows for easy management of the site's gallery.
-- **User-Friendly Editing**: Add, edit, or delete gallery items through a form-based interface.
-- **Simple Deployment**: Configured for one-command deployment to GitHub Pages.
-- **Responsive Design**: Looks great on desktops, tablets, and mobile devices.
+- `performances`: An object containing two arrays: `upcoming` and `past`.
+- `imagePool`: An array of image objects, each with a `url` and a `name`. This is the central library for all site images.
+- `heroImages`: An array of image URLs to be displayed in the homepage slideshow.
+- `aboutImage`: A single image URL for the "About Us" section.
+- `officers`: An object mapping officer titles to names.
 
 ### Tech Stack
 
 - **[React](https://react.dev/)**: A JavaScript library for building user interfaces.
 - **[Vite](https://vitejs.dev/)**: A fast and modern build tool for web development.
-- **[React Router](https://reactrouter.com/)**: For handling client-side routing.
+- **[React Router](https://reactrouter.com/)**: For handling client-side routing (`HashRouter` is used for GitHub Pages compatibility).
 - **[GitHub Pages](https://pages.github.com/)**: For hosting the live website.
+- **[GitHub Actions](https://github.com/features/actions)**: For continuous deployment.
 
-### Development and Deployment
+### Development
 
-Follow these steps if you want to run the project locally or deploy a new version to the live site.
+Follow these steps if you want to run the project locally.
 
 #### Running Locally
 
@@ -89,17 +95,15 @@ Follow these steps if you want to run the project locally or deploy a new versio
     ```sh
     npm install
     ```
-3.  **Start the development server**:
+3.  **Create Environment File**:
+    - Create a file named `.env` in the root of the project.
+    - Add the following line, which is required for the image upload functionality:
+    ```
+    VITE_IMGBB_API_KEY=your_api_key_here
+    ```
+    *(Note: The key is safe to expose as it is a free, public key with no associated account data.)*
+4.  **Start the development server**:
     ```sh
     npm run dev
     ```
     This will open the site on [http://localhost:5173](http://localhost:5173). The server will automatically reload when you save changes.
-
-#### Deploying to GitHub Pages
-
-After you've committed your changes (like updating the `data.json` file), you can deploy the site by running a single command:
-
-```sh
-npm run deploy
-```
-This command automatically builds the site and pushes it to the `gh-pages` branch, making your changes live within a few minutes.
