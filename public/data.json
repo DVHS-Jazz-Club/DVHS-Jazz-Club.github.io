@@ -1,6 +1,9 @@
 {
-  "aboutImage": "",
-  "heroImages": [],
+  "aboutImage": "https://i.ibb.co/YTDYg5kz/Screenshot-2025-06-20-at-11-41-46-PM.png",
+  "heroImages": [
+    "https://i.ibb.co/YTDYg5kz/Screenshot-2025-06-20-at-11-41-46-PM.png",
+    "https://picsum.photos/seed/jazzclub/800/600"
+  ],
   "imagePool": [
     {
       "url": "https://picsum.photos/seed/jazzclub/800/600",
