@@ -1,6 +1,40 @@
+import { useMemo } from 'react';
 import SmoothScrollLink from './SmoothScrollLink';
 
 const Footer = () => {
+    // Extract social links for better maintainability
+    const socialLinks = useMemo(() => [
+        {
+            href: 'https://www.instagram.com/dvhsjazzclub',
+            icon: 'fab fa-instagram',
+            label: 'Instagram'
+        },
+        {
+            href: 'https://www.youtube.com/@dvjazzclub',
+            icon: 'fab fa-youtube',
+            label: 'YouTube'
+        },
+        {
+            href: 'https://discord.gg/ap65wjgm4k',
+            icon: 'fab fa-discord',
+            label: 'Discord'
+        },
+        {
+            href: 'mailto:dvjazzclub@gmail.com',
+            icon: 'fas fa-envelope',
+            label: 'Email'
+        }
+    ], []);
+
+    // Extract navigation links for better maintainability
+    const navigationLinks = useMemo(() => [
+        { to: '#home', label: 'Home' },
+        { to: '#about', label: 'About Us' },
+        { to: '#performances', label: 'Performances' },
+        { to: '#join', label: 'Get Involved' },
+        { to: '#contact', label: 'Details' }
+    ], []);
+
     return (
         <footer className="footer">
             <div className="container">
@@ -9,21 +43,30 @@ const Footer = () => {
                         <h3>Dougherty Valley High School Jazz Club</h3>
                         <p>Where music meets passion and friendships are forged through jazz.</p>
                         <div className="social-links">
-                            <a href="https://www.instagram.com/dvhsjazzclub" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
-                            <a href="https://www.youtube.com/@dvjazzclub" target="_blank" rel="noopener noreferrer"><i className="fab fa-youtube"></i></a>
-                            <a href="https://discord.gg/ap65wjgm4k" target="_blank" rel="noopener noreferrer"><i className="fab fa-discord"></i></a>
-                            <a href="mailto:dvjazzclub@gmail.com"><i className="fas fa-envelope"></i></a>
+                            {socialLinks.map(({ href, icon, label }) => (
+                                <a 
+                                    key={label}
+                                    href={href} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    aria-label={label}
+                                >
+                                    <i className={icon}></i>
+                                </a>
+                            ))}
                         </div>
                     </div>
                     <div className="footer-section">
                         <h4>Quick Links</h4>
                         <ul>
-                            <li><SmoothScrollLink to="#home">Home</SmoothScrollLink></li>
-                            <li><SmoothScrollLink to="#about">About Us</SmoothScrollLink></li>
-                            <li><SmoothScrollLink to="#performances">Performances</SmoothScrollLink></li>
-                            <li><SmoothScrollLink to="#join">Get Involved</SmoothScrollLink></li>
-                            <li><SmoothScrollLink to="#contact">Details</SmoothScrollLink></li>
-                            <li><a href="/#/admin" className="admin-link-footer">Admin</a></li>
+                            {navigationLinks.map(({ to, label }) => (
+                                <li key={label}>
+                                    <SmoothScrollLink to={to}>{label}</SmoothScrollLink>
+                                </li>
+                            ))}
+                            <li>
+                                <a href="/#/admin" className="admin-link-footer">Admin</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

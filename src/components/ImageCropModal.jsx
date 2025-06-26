@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import Cropper from 'react-easy-crop';
 
 const createImage = (url) => {
@@ -51,44 +51,44 @@ async function getCroppedImg(imageSrc, crop, zoom, rotation = 0, aspect = 16 / 9
   });
 }
 
-const ImageCropModal = ({ imageSrc, onCancel, onCropComplete, aspect = 16 / 9 }) => {
+const ImageCropModal = memo(({ imageSrc, onCancel, onCropComplete, aspect = 16 / 9 }) => {
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
 
-  const onCropChange = (newCrop) => setCrop(newCrop);
-  const onZoomChange = (newZoom) => setZoom(newZoom);
+  const onCropChange = useCallback((newCrop) => setCrop(newCrop), []);
+  const onZoomChange = useCallback((newZoom) => setZoom(newZoom), []);
 
   const onCropCompleteInternal = useCallback((croppedArea, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
   }, []);
 
-  const handleZoomIn = () => {
+  const handleZoomIn = useCallback(() => {
     setZoom(prev => Math.min(prev + 0.1, 3));
-  };
+  }, []);
 
-  const handleZoomOut = () => {
+  const handleZoomOut = useCallback(() => {
     setZoom(prev => Math.max(prev - 0.1, 1));
-  };
+  }, []);
 
-  const handleRotateLeft = () => {
+  const handleRotateLeft = useCallback(() => {
     setRotation(prev => prev - 90);
-  };
+  }, []);
 
-  const handleRotateRight = () => {
+  const handleRotateRight = useCallback(() => {
     setRotation(prev => prev + 90);
-  };
+  }, []);
 
-  const handleFineRotation = (e) => {
+  const handleFineRotation = useCallback((e) => {
     setRotation(parseInt(e.target.value));
-  };
+  }, []);
 
-  const handleDone = async () => {
+  const handleDone = useCallback(async () => {
     if (!croppedAreaPixels) return;
     const croppedBlob = await getCroppedImg(imageSrc, croppedAreaPixels, zoom, rotation, aspect);
     onCropComplete(croppedBlob);
-  };
+  }, [croppedAreaPixels, imageSrc, zoom, rotation, aspect, onCropComplete]);
 
   return (
     <div className="modal-overlay active" style={{ zIndex: 3000 }}>
@@ -308,6 +308,8 @@ const ImageCropModal = ({ imageSrc, onCancel, onCropComplete, aspect = 16 / 9 })
       </div>
     </div>
   );
-};
+});
+
+ImageCropModal.displayName = 'ImageCropModal';
 
 export default ImageCropModal; 

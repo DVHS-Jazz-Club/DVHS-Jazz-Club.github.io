@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useCallback, useMemo } from 'react';
 
-const PerformanceForm = ({ item, onSave, onCancel, imagePool }) => {
+const PerformanceForm = memo(({ item, onSave, onCancel, imagePool }) => {
   const [performance, setPerformance] = useState({
     day: '',
     month: '',
@@ -24,25 +24,28 @@ const PerformanceForm = ({ item, onSave, onCancel, imagePool }) => {
     }
   }, [item]);
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
     setPerformance(prev => ({ ...prev, [name]: value }));
-  };
+  }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
     onSave({
       ...performance,
       tags: performance.tags.split(',').map(tag => tag.trim()), // Convert string back to array
     });
-  };
+  }, [performance, onSave]);
 
-  const handleMediaToggle = (url) => {
+  const handleMediaToggle = useCallback((url) => {
     const updatedMedia = performance.media.includes(url)
         ? performance.media.filter(mediaUrl => mediaUrl !== url)
         : [...performance.media, url];
     setPerformance(prev => ({...prev, media: updatedMedia}));
-  };
+  }, [performance.media]);
+
+  // Memoize image pool to prevent unnecessary re-renders
+  const safeImagePool = useMemo(() => imagePool || [], [imagePool]);
 
   return (
     <div className="modal-overlay active">
@@ -95,7 +98,7 @@ const PerformanceForm = ({ item, onSave, onCancel, imagePool }) => {
             <h4>Performance Images</h4>
             <p>Select images from your library to associate with this performance.</p>
             <div className="image-selection-grid">
-                {(imagePool || []).map((image, index) => (
+                {safeImagePool.map((image, index) => (
                     <div 
                         key={index}
                         className={`image-selection-item ${performance.media.includes(image.url) ? 'selected' : ''}`}
@@ -120,6 +123,8 @@ const PerformanceForm = ({ item, onSave, onCancel, imagePool }) => {
       </div>
     </div>
   );
-};
+});
+
+PerformanceForm.displayName = 'PerformanceForm';
 
 export default PerformanceForm; 

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
-const SmoothScrollLink = ({ to, children, className, onClick }) => {
-  const handleClick = (e) => {
+const SmoothScrollLink = ({ to, children, className, onClick, ...props }) => {
+  const handleClick = useCallback((e) => {
     e.preventDefault();
     
     // Find the target element
@@ -13,16 +13,23 @@ const SmoothScrollLink = ({ to, children, className, onClick }) => {
         behavior: 'smooth',
         block: 'start',
       });
+    } else {
+      console.warn(`Target element with id "${targetId}" not found`);
     }
 
     // If there's an additional onClick function passed (like closing a menu), call it
     if (onClick) {
-      onClick();
+      onClick(e);
     }
-  };
+  }, [to, onClick]);
 
   return (
-    <a href={to} onClick={handleClick} className={className}>
+    <a 
+      href={to} 
+      onClick={handleClick} 
+      className={className}
+      {...props}
+    >
       {children}
     </a>
   );

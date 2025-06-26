@@ -1,17 +1,53 @@
-const Contact = ({ officers }) => {
+import React, { memo, useMemo } from 'react';
+
+const Contact = memo(({ officers }) => {
     if (!officers) {
-        return null; // or a loading indicator
+        return null;
     }
 
-    const officerList = (
+    // Extract officer data for better maintainability
+    const officerData = useMemo(() => [
+        { title: 'Vice President', name: officers.vicePresident },
+        { title: 'Conductor', name: officers.conductor },
+        { title: 'Secretary', name: officers.secretary },
+        { title: 'Treasurer', name: officers.treasurer },
+        { title: 'PR Officer', name: officers.prOfficer }
+    ], [officers]);
+
+    const officerList = useMemo(() => (
         <>
-            <strong>Vice President:</strong> {officers.vicePresident}<br />
-            <strong>Conductor:</strong> {officers.conductor}<br />
-            <strong>Secretary:</strong> {officers.secretary}<br />
-            <strong>Treasurer:</strong> {officers.treasurer}<br />
-            <strong>PR Officer:</strong> {officers.prOfficer}
+            {officerData.map(({ title, name }) => (
+                <React.Fragment key={title}>
+                    <strong>{title}:</strong> {name}<br />
+                </React.Fragment>
+            ))}
         </>
-    );
+    ), [officerData]);
+
+    // Extract contact items for better maintainability
+    const contactItems = useMemo(() => [
+        {
+            icon: 'fas fa-map-marker-alt',
+            title: 'Meetings',
+            content: 'Fridays at Lunch, P124 (Band Room)'
+        },
+        {
+            icon: 'fas fa-user-tie',
+            title: 'Faculty Advisor',
+            content: officers.facultyAdvisor
+        },
+        {
+            icon: 'fas fa-user-graduate',
+            title: 'President',
+            content: officers.president
+        },
+        {
+            icon: 'fas fa-users',
+            title: 'Club Officers',
+            content: officerList,
+            className: 'officer-list'
+        }
+    ], [officers.facultyAdvisor, officers.president, officerList]);
 
     return (
         <section id="contact" className="contact">
@@ -22,39 +58,22 @@ const Contact = ({ officers }) => {
                 </div>
                 <div className="contact-content">
                     <div className="contact-info" id="contact-info">
-                        <div className="contact-item">
-                            <i className="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Meetings</h4>
-                                <p>Fridays at Lunch, P124 (Band Room)</p>
+                        {contactItems.map(({ icon, title, content, className }) => (
+                            <div key={title} className="contact-item">
+                                <i className={icon} aria-hidden="true"></i>
+                                <div>
+                                    <h4>{title}</h4>
+                                    <p className={className}>{content}</p>
+                                </div>
                             </div>
-                        </div>
-                        <div className="contact-item">
-                            <i className="fas fa-user-tie"></i>
-                            <div>
-                                <h4>Faculty Advisor</h4>
-                                <p>{officers.facultyAdvisor}</p>
-                            </div>
-                        </div>
-                        <div className="contact-item">
-                            <i className="fas fa-user-graduate"></i>
-                            <div>
-                                <h4>President</h4>
-                                <p>{officers.president}</p>
-                            </div>
-                        </div>
-                        <div className="contact-item">
-                            <i className="fas fa-users"></i>
-                            <div>
-                                <h4>Club Officers</h4>
-                                <p className="officer-list">{officerList}</p>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
         </section>
     );
-};
+});
+
+Contact.displayName = 'Contact';
 
 export default Contact; 

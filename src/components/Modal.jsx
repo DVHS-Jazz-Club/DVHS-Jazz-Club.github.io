@@ -1,15 +1,34 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useCallback, useMemo } from 'react';
 
-const Modal = ({ show, onClose, title, images }) => {
+const Modal = memo(({ show, onClose, title, images }) => {
     const [loadedImages, setLoadedImages] = useState(new Set());
     const [errorImages, setErrorImages] = useState(new Set());
 
+    // Memoize media items array
+    const mediaItems = useMemo(() => Array.isArray(images) ? images : [], [images]);
+
+    // Memoize close handler
+    const handleClose = useCallback(() => {
+        onClose();
+    }, [onClose]);
+
+    // Memoize overlay click handler
+    const handleOverlayClick = useCallback((e) => {
+        if (e.target === e.currentTarget) {
+            onClose();
+        }
+    }, [onClose]);
+
+    // Memoize content click handler
+    const handleContentClick = useCallback((e) => {
+        e.stopPropagation();
+    }, []);
+
     useEffect(() => {
-        if (show && images) {
+        if (show && mediaItems.length > 0) {
             setLoadedImages(new Set());
             setErrorImages(new Set());
             
-            const mediaItems = Array.isArray(images) ? images : [];
             mediaItems.forEach((mediaUrl, index) => {
                 if (!mediaUrl.includes('youtube.com/embed') && !mediaUrl.includes('drive.google.com/file')) {
                     const img = new window.Image();
@@ -23,18 +42,25 @@ const Modal = ({ show, onClose, title, images }) => {
                 }
             });
         }
-    }, [show, images]);
+    }, [show, mediaItems]);
+
+    // Memoize image load handlers
+    const handleImageLoad = useCallback((index) => {
+        setLoadedImages(prev => new Set([...prev, index]));
+    }, []);
+
+    const handleImageError = useCallback((index) => {
+        setErrorImages(prev => new Set([...prev, index]));
+    }, []);
 
     if (!show) {
         return null;
     }
 
-    const mediaItems = Array.isArray(images) ? images : [];
-
     return (
-        <div className="modal-overlay active" onClick={onClose}>
-            <div className="modal-content" onClick={e => e.stopPropagation()}>
-                <button className="modal-close-btn" onClick={onClose}>&times;</button>
+        <div className="modal-overlay active" onClick={handleOverlayClick}>
+            <div className="modal-content" onClick={handleContentClick}>
+                <button className="modal-close-btn" onClick={handleClose}>&times;</button>
                 <h3 className="modal-title">{title}</h3>
                 <div className="modal-gallery-grid">
                     {mediaItems.length > 0 ? (
@@ -69,8 +95,8 @@ const Modal = ({ show, onClose, title, images }) => {
                                                     opacity: isImageLoaded ? 1 : 0,
                                                     transition: 'opacity 0.3s ease-in'
                                                 }}
-                                                onLoad={() => setLoadedImages(prev => new Set([...prev, index]))}
-                                                onError={() => setErrorImages(prev => new Set([...prev, index]))}
+                                                onLoad={() => handleImageLoad(index)}
+                                                onError={() => handleImageError(index)}
                                             />
                                             {isImageError && (
                                                 <div className="image-placeholder" style={{ height: '250px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#f5f5f5', borderRadius: '8px' }}>
@@ -92,6 +118,8 @@ const Modal = ({ show, onClose, title, images }) => {
             </div>
         </div>
     );
-};
+});
+
+Modal.displayName = 'Modal';
 
 export default Modal; 

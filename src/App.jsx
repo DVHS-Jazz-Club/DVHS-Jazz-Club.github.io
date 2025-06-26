@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './styles.css';
 
@@ -15,30 +15,47 @@ import Admin from './components/Admin';
 
 function App() {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({ title: '', images: [] });
 
   useEffect(() => {
-    fetch('/data.json')
-      .then(response => response.json())
-      .then(jsonData => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await fetch('/data.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const jsonData = await response.json();
         setData(jsonData);
-      });
+      } catch (err) {
+        console.error('Failed to fetch data:', err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const handlePerformanceClick = (performance) => {
+  const handlePerformanceClick = useMemo(() => (performance) => {
     setModalContent({ 
       title: performance.title, 
       images: performance.media || [] 
     });
     setShowModal(true);
-  };
+  }, []);
 
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-  
-  const MainSite = () => (
+  const handleCloseModal = useMemo(() => () => {
+    setShowModal(false);
+  }, []);
+
+  // Memoize MainSite component to prevent unnecessary re-renders
+  const MainSite = useMemo(() => () => (
     <>
       <Hero heroImages={data.heroImages} />
       <About aboutImage={data.aboutImage} />
@@ -50,24 +67,65 @@ function App() {
       <Join />
       <Contact officers={data.officers} />
     </>
-  );
+  ), [data, handlePerformanceClick]);
+
+  if (loading) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        fontSize: '1.2rem',
+        color: '#666'
+      }}>
+        Loading Jazz Club Website...
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        height: '100vh',
+        fontSize: '1.2rem',
+        color: '#dc3545',
+        textAlign: 'center',
+        padding: '20px'
+      }}>
+        <div>
+          <h2>Error Loading Website</h2>
+          <p>{error}</p>
+          <p>Please refresh the page or try again later.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<MainSite />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-      </main>
-      <Footer />
-      <Modal
-        show={showModal}
-        onClose={() => setShowModal(false)}
-        title={modalContent.title}
-        images={modalContent.images}
-      />
+      <Routes>
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/" element={
+          <>
+            <Navbar />
+            <main>
+              <MainSite />
+            </main>
+            <Footer />
+            <Modal
+              show={showModal}
+              onClose={handleCloseModal}
+              title={modalContent.title}
+              images={modalContent.images}
+            />
+          </>
+        } />
+        <Route path="*" element={<div>404 - Page not found</div>} />
+      </Routes>
     </>
   );
 }
