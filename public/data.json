@@ -1,17 +1,22 @@
 {
-  "aboutImage": "https://i.ibb.co/YTDYg5kz/Screenshot-2025-06-20-at-11-41-46-PM.png",
+  "aboutImage": "https://picsum.photos/seed/jazzclub/800/600",
   "heroImages": [
     "https://i.ibb.co/YTDYg5kz/Screenshot-2025-06-20-at-11-41-46-PM.png",
-    "https://picsum.photos/seed/jazzclub/800/600"
+    "https://picsum.photos/seed/jazzclub/800/600",
+    "https://i.ibb.co/m5Gz3rMH/IMG-2199.jpg"
   ],
   "imagePool": [
     {
       "url": "https://picsum.photos/seed/jazzclub/800/600",
-      "name": "Placeholder Test Image"
+      "name": "Test Laptop Image"
     },
     {
       "url": "https://i.ibb.co/YTDYg5kz/Screenshot-2025-06-20-at-11-41-46-PM.png",
-      "name": "skibidigutsnsmarthtonguesimulatorfeminineboyavatargames123.com"
+      "name": "Test Blackpowder image"
+    },
+    {
+      "url": "https://i.ibb.co/m5Gz3rMH/IMG-2199.jpg",
+      "name": "Last Access Meeting 2025"
     }
   ],
   "officers": {
