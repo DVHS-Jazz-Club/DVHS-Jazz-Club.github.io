@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, memo } from 'react';
 import SmoothScrollLink from './SmoothScrollLink';
 
-const Hero = ({ heroImages }) => {
+const Hero = memo(({ heroImages }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [allLoaded, setAllLoaded] = useState(false);
     const [firstImageLoaded, setFirstImageLoaded] = useState(false);
@@ -30,11 +30,47 @@ const Hero = ({ heroImages }) => {
         }
     }, [heroImages.length, isTransitioning]);
 
-    const prevImage = () => {
+    const prevImage = useCallback(() => {
         if (!isTransitioning) {
             setCurrentIndex(prevIndex => (prevIndex - 1 + heroImages.length) % heroImages.length);
         }
-    };
+    }, [heroImages.length, isTransitioning]);
+
+    // Preload image function
+    const preloadImage = useCallback((url, index) => {
+        return new Promise((resolve, reject) => {
+            const img = new window.Image();
+            img.onload = () => {
+                preloadedImages.current.add(index);
+                loadedCount.current += 1;
+                
+                // Show first image immediately when it loads
+                if (index === 0) {
+                    setFirstImageLoaded(true);
+                    showImage(0);
+                }
+                
+                // Start rotation when all images are loaded
+                if (loadedCount.current === heroImages.length) {
+                    setAllLoaded(true);
+                }
+                resolve();
+            };
+            img.onerror = () => {
+                loadedCount.current += 1;
+                // Show first image even if it fails to load
+                if (index === 0) {
+                    setFirstImageLoaded(true);
+                    showImage(0);
+                }
+                if (loadedCount.current === heroImages.length) {
+                    setAllLoaded(true);
+                }
+                reject();
+            };
+            img.src = url;
+        });
+    }, [heroImages.length, showImage]);
 
     useEffect(() => {
         if (heroImages.length > 0) {
@@ -45,40 +81,7 @@ const Hero = ({ heroImages }) => {
             preloadedImages.current.clear();
             
             // Preload all images
-            const preloadPromises = heroImages.map((url, index) => {
-                return new Promise((resolve, reject) => {
-                    const img = new window.Image();
-                    img.onload = () => {
-                        preloadedImages.current.add(index);
-                        loadedCount.current += 1;
-                        
-                        // Show first image immediately when it loads
-                        if (index === 0) {
-                            setFirstImageLoaded(true);
-                            showImage(0);
-                        }
-                        
-                        // Start rotation when all images are loaded
-                        if (loadedCount.current === heroImages.length) {
-                            setAllLoaded(true);
-                        }
-                        resolve();
-                    };
-                    img.onerror = () => {
-                        loadedCount.current += 1;
-                        // Show first image even if it fails to load
-                        if (index === 0) {
-                            setFirstImageLoaded(true);
-                            showImage(0);
-                        }
-                        if (loadedCount.current === heroImages.length) {
-                            setAllLoaded(true);
-                        }
-                        reject();
-                    };
-                    img.src = url;
-                });
-            });
+            const preloadPromises = heroImages.map((url, index) => preloadImage(url, index));
 
             // Wait for all images to preload
             Promise.allSettled(preloadPromises).then(() => {
@@ -88,7 +91,7 @@ const Hero = ({ heroImages }) => {
                 }
             });
         }
-    }, [heroImages, showImage]);
+    }, [heroImages, preloadImage]);
 
     useEffect(() => {
         if (allLoaded && preloadedImages.current.has(currentIndex)) {
@@ -124,6 +127,8 @@ const Hero = ({ heroImages }) => {
             )}
         </section>
     );
-};
+});
+
+Hero.displayName = 'Hero';
 
 export default Hero; 

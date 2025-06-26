@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import '../styles.css';
 import PerformanceForm from './PerformanceForm';
 import ImageCropModal from './ImageCropModal';
 
 const Admin = () => {
+    console.log('Admin component rendering'); // Debug log
+    
     const [password, setPassword] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [data, setData] = useState(null);
@@ -26,6 +29,7 @@ const Admin = () => {
     const correctPassword = 'jazzisawesome';
 
     useEffect(() => {
+        console.log('Admin useEffect running, isAuthenticated:', isAuthenticated); // Debug log
         if (isAuthenticated) {
             fetch('/data.json')
                 .then(response => response.json())
@@ -47,9 +51,9 @@ const Admin = () => {
         }
     }, [isAuthenticated]);
 
-    const handlePasswordChange = (e) => setPassword(e.target.value);
+    const handlePasswordChange = useCallback((e) => setPassword(e.target.value), []);
 
-    const handleLogin = (e) => {
+    const handleLogin = useCallback((e) => {
         e.preventDefault();
         if (password === correctPassword) {
             setIsAuthenticated(true);
@@ -57,17 +61,19 @@ const Admin = () => {
         } else {
             setError('Incorrect password.');
         }
-    };
+    }, [password]);
 
     // --- Performance Handlers ---
-    const handleOpenForm = (type, item = null, index = null) => {
+    const handleOpenForm = useCallback((type, item = null, index = null) => {
         setEditingType(type);
         setEditingItem(item);
         setEditingIndex(index);
         setIsFormVisible(true);
-    };
+    }, []);
 
-    const handleSavePerformance = (performance) => {
+    const handleSavePerformance = useCallback((performance) => {
+        if (!data || !data.performances) return;
+        
         const updatedPerformances = { ...data.performances };
 
         if (editingIndex !== null) {
@@ -80,18 +86,20 @@ const Admin = () => {
 
         setData(prevData => ({ ...prevData, performances: updatedPerformances }));
         setIsFormVisible(false);
-    };
+    }, [data, editingIndex, editingType]);
     
-    const handleDeletePerformance = (index, type) => {
+    const handleDeletePerformance = useCallback((index, type) => {
+        if (!data || !data.performances) return;
+        
         if (window.confirm("Are you sure you want to delete this performance?")) {
             const updatedPerformances = { ...data.performances };
             updatedPerformances[type].splice(index, 1);
             setData(prevData => ({ ...prevData, performances: updatedPerformances }));
         }
-    };
+    }, [data]);
 
     // --- Image Upload and Cropping Handlers ---
-    const handleImageUpload = (e) => {
+    const handleImageUpload = useCallback((e) => {
         const file = e.target.files[0];
         if (!file) return;
 
@@ -103,15 +111,17 @@ const Admin = () => {
         
         // Reset the file input
         e.target.value = '';
-    };
+    }, []);
 
-    const handleCropCancel = () => {
+    const handleCropCancel = useCallback(() => {
         setIsCropModalVisible(false);
         setSelectedImageFile(null);
         setSelectedImagePreview(null);
-    };
+    }, []);
 
-    const handleCropComplete = async (croppedBlob) => {
+    const handleCropComplete = useCallback(async (croppedBlob) => {
+        if (!data) return;
+        
         try {
             // Create a file from the cropped blob
             const croppedFile = new File([croppedBlob], selectedImageFile.name, {
@@ -153,9 +163,11 @@ const Admin = () => {
                 setSelectedImagePreview(null);
             }
         }
-    };
+    }, [selectedImageFile, selectedImagePreview, data]);
 
-    const handleDeleteImage = (indexToDelete) => {
+    const handleDeleteImage = useCallback((indexToDelete) => {
+        if (!data || !data.imagePool) return;
+        
         if (window.confirm("Are you sure you want to delete this image? It will be removed from all pages and performances.")) {
             const imageUrlToDelete = data.imagePool[indexToDelete].url;
             const updatedImagePool = data.imagePool.filter((_, index) => index !== indexToDelete);
@@ -173,34 +185,45 @@ const Admin = () => {
                 aboutImage: newAboutImage
             }));
         }
-    };
+    }, [data]);
 
-    const handleRenameImage = (index) => {
+    const handleRenameImage = useCallback((index) => {
+        if (!data || !data.imagePool) return;
+        
         const newName = prompt("Enter a new name for this image:", data.imagePool[index].name);
         if (newName && newName.trim() !== '') {
             const updatedImagePool = [...data.imagePool];
             updatedImagePool[index].name = newName.trim();
             setData(prevData => ({ ...prevData, imagePool: updatedImagePool }));
         }
-    };
+    }, [data]);
 
-    const handleAboutImageSelect = (url) => {
+    const handleAboutImageSelect = useCallback((url) => {
         setData(prevData => ({ ...prevData, aboutImage: url }));
-    };
+    }, []);
 
-    const handleHeroImageToggle = (url) => {
+    const handleHeroImageToggle = useCallback((url) => {
+        if (!data || !data.heroImages) return;
+        
         const updatedHeroImages = data.heroImages.includes(url)
             ? data.heroImages.filter(heroUrl => heroUrl !== url)
             : [...data.heroImages, url];
         setData(prevData => ({ ...prevData, heroImages: updatedHeroImages }));
-    };
+    }, [data]);
 
-    const handleCopyToClipboard = () => {
+    const handleCopyToClipboard = useCallback(() => {
+        if (!data) return;
+        
         const jsonString = JSON.stringify(data, null, 2);
         navigator.clipboard.writeText(jsonString)
             .then(() => alert("JSON data copied to clipboard!"))
             .catch(() => alert("Failed to copy data. Please copy it manually."));
-    };
+    }, [data]);
+
+    // Memoize safe data arrays
+    const safeUpcomingPerformances = useMemo(() => data?.performances?.upcoming || [], [data?.performances?.upcoming]);
+    const safePastPerformances = useMemo(() => data?.performances?.past || [], [data?.performances?.past]);
+    const safeImagePool = useMemo(() => data?.imagePool || [], [data?.imagePool]);
 
     if (!isAuthenticated) {
         return (
@@ -216,21 +239,71 @@ const Admin = () => {
                     <button type="submit">Login</button>
                     {error && <p className="error-message">{error}</p>}
                 </form>
+                <div style={{ textAlign: 'center', marginTop: '24px' }}>
+                    <a 
+                        href="/#/" 
+                        style={{
+                            display: 'inline-block',
+                            background: 'linear-gradient(135deg, #1C3B8A, #2949a7)',
+                            color: 'white',
+                            borderRadius: '22px',
+                            padding: '10px 24px',
+                            fontWeight: 600,
+                            fontSize: '1rem',
+                            textDecoration: 'none',
+                            boxShadow: '0 2px 8px rgba(28,59,138,0.08)',
+                            transition: 'background 0.2s, color 0.2s',
+                            marginTop: '10px',
+                        }}
+                        onMouseOver={e => { e.target.style.background = '#2949a7'; }}
+                        onMouseOut={e => { e.target.style.background = 'linear-gradient(135deg, #1C3B8A, #2949a7)'; }}
+                    >
+                        ← Back to Website
+                    </a>
+                </div>
             </div>
         );
     }
+
+    // Add a fixed back button to the main admin panel
+    const backButton = (
+        <a
+            href="/#/"
+            style={{
+                position: 'fixed',
+                top: 24,
+                right: 24,
+                zIndex: 2000,
+                background: 'linear-gradient(135deg, #1C3B8A, #2949a7)',
+                color: 'white',
+                borderRadius: '22px',
+                padding: '10px 24px',
+                fontWeight: 600,
+                fontSize: '1rem',
+                textDecoration: 'none',
+                boxShadow: '0 2px 8px rgba(28,59,138,0.08)',
+                transition: 'background 0.2s, color 0.2s',
+            }}
+            onMouseOver={e => { e.target.style.background = '#2949a7'; }}
+            onMouseOut={e => { e.target.style.background = 'linear-gradient(135deg, #1C3B8A, #2949a7)'; }}
+        >
+            ← Back to Website
+        </a>
+    );
 
     if (!data) {
         return (
             <div className="admin-panel-container">
                 <h2>Admin Panel</h2>
                 {error ? <p className="error-message">{error}</p> : <p>Loading data...</p>}
+                {backButton}
             </div>
         );
     }
 
     return (
         <>
+            {backButton}
             <div className="admin-panel-container">
                 <h2>Admin Panel</h2>
                 <p>Welcome! Manage your website content below.</p>
@@ -239,7 +312,7 @@ const Admin = () => {
                 <div className="admin-section">
                     <h3>Upcoming Performances</h3>
                     <div className="performance-list">
-                        {(data.performances.upcoming || []).map((item, index) => (
+                        {safeUpcomingPerformances.map((item, index) => (
                             <div key={`upcoming-${index}`} className="admin-list-item">
                                 <span>{item.title}</span>
                                 <div className="item-actions">
@@ -256,7 +329,7 @@ const Admin = () => {
                 <div className="admin-section">
                     <h3>Past Performances</h3>
                      <div className="performance-list">
-                        {(data.performances.past || []).map((item, index) => (
+                        {safePastPerformances.map((item, index) => (
                             <div key={`past-${index}`} className="admin-list-item">
                                 <span>{item.title}</span>
                                 <div className="item-actions">
@@ -286,7 +359,7 @@ const Admin = () => {
                         />
                     </div>
                     <div className="image-list image-library">
-                        {(data.imagePool || []).map((image, index) => (
+                        {safeImagePool.map((image, index) => (
                             <div key={index} className="admin-list-item">
                                 <span className="image-name">{image.name}</span>
                                 <span className="image-url-small">{image.url}</span>
@@ -308,7 +381,7 @@ const Admin = () => {
                         <h4>About Us Page Image</h4>
                         <p>Select one image to display on the 'About Us' section.</p>
                         <div className="image-selection-grid">
-                           {(data.imagePool || []).map((image, index) => {
+                           {safeImagePool.map((image, index) => {
                                const isSelected = data.aboutImage === image.url;
                                const isActive = originalData.aboutImage === image.url;
                                let itemClass = 'image-selection-item';
@@ -339,7 +412,7 @@ const Admin = () => {
                         <h4>Homepage Hero Slideshow</h4>
                         <p>Select which images to show in the homepage slideshow.</p>
                         <div className="image-selection-grid">
-                           {(data.imagePool || []).map((image, index) => {
+                           {safeImagePool.map((image, index) => {
                                const isSelected = data.heroImages.includes(image.url);
                                const isActive = originalData.heroImages.includes(image.url);
                                let itemClass = 'image-selection-item';
@@ -388,7 +461,7 @@ const Admin = () => {
                     item={editingItem}
                     onSave={handleSavePerformance}
                     onCancel={() => setIsFormVisible(false)}
-                    imagePool={data.imagePool || []}
+                    imagePool={safeImagePool}
                 />
             )}
             

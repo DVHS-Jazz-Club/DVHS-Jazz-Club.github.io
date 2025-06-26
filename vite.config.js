@@ -7,5 +7,18 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          cropper: ['react-easy-crop']
+        }
+      }
+    },
+    chunkSizeWarningLimit: 1000,
+    sourcemap: false
   },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-easy-crop']
+  }
 })

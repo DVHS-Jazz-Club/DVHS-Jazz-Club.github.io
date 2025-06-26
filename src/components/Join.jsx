@@ -1,4 +1,57 @@
-const Join = () => {
+import React, { memo, useMemo } from 'react';
+
+const Join = memo(() => {
+    // Extract benefits for better maintainability
+    const benefits = useMemo(() => [
+        'Learn music theory and improvisation',
+        'Join a close-knit, welcoming community',
+        'Perform at school and community events',
+        'Participate in fun summer jam sessions',
+        'Develop your musical skills and confidence',
+        'Have fun making music together'
+    ], []);
+
+    // Extract detail items for better maintainability
+    const detailItems = useMemo(() => [
+        {
+            icon: 'fas fa-calendar',
+            title: 'Meeting Times (School Year)',
+            content: 'Every Wednesday, after school<br />Location: P124 (Band Room)'
+        },
+        {
+            icon: 'fas fa-sun',
+            title: 'Summer Meetings',
+            content: 'We hold casual jam sessions during the summer. <br />Sign up to get notified!'
+        },
+        {
+            icon: 'fas fa-user-graduate',
+            title: 'Requirements',
+            content: 'Open to all DVHS students<br />No experience required!'
+        }
+    ], []);
+
+    // Extract social links for better maintainability
+    const socialLinks = useMemo(() => [
+        {
+            href: 'https://discord.gg/ap65wjgm4k',
+            icon: 'fab fa-discord',
+            label: 'Join our Discord Server',
+            className: 'discord'
+        },
+        {
+            href: 'https://www.instagram.com/dvhsjazzclub',
+            icon: 'fab fa-instagram',
+            label: 'Follow on Instagram',
+            className: 'instagram'
+        },
+        {
+            href: 'mailto:dvjazzclub@gmail.com',
+            icon: 'fas fa-envelope',
+            label: 'Email the Club',
+            className: 'email'
+        }
+    ], []);
+
     return (
         <section id="join" className="join">
             <div className="container">
@@ -10,60 +63,52 @@ const Join = () => {
                     <div className="join-info">
                         <h3>Why Join?</h3>
                         <ul className="join-benefits">
-                            <li><i className="fas fa-check"></i> Learn music theory and improvisation</li>
-                            <li><i className="fas fa-check"></i> Join a close-knit, welcoming community</li>
-                            <li><i className="fas fa-check"></i> Perform at school and community events</li>
-                            <li><i className="fas fa-check"></i> Participate in fun summer jam sessions</li>
-                            <li><i className="fas fa-check"></i> Develop your musical skills and confidence</li>
-                            <li><i className="fas fa-check"></i> Have fun making music together</li>
+                            {benefits.map((benefit, index) => (
+                                <li key={index}>
+                                    <i className="fas fa-check" aria-hidden="true"></i> {benefit}
+                                </li>
+                            ))}
                         </ul>
                         <div className="join-details">
-                            <div className="detail-item">
-                                <i className="fas fa-calendar"></i>
-                                <div>
-                                    <h4>Meeting Times (School Year)</h4>
-                                    <p>Every Wednesday, after school<br />Location: P124 (Band Room)</p>
+                            {detailItems.map(({ icon, title, content }) => (
+                                <div key={title} className="detail-item">
+                                    <i className={icon} aria-hidden="true"></i>
+                                    <div>
+                                        <h4>{title}</h4>
+                                        <p dangerouslySetInnerHTML={{ __html: content }}></p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="detail-item">
-                                <i className="fas fa-sun"></i>
-                                <div>
-                                    <h4>Summer Meetings</h4>
-                                    <p>We hold casual jam sessions during the summer. <br />Sign up to get notified!</p>
-                                </div>
-                            </div>
-                            <div className="detail-item">
-                                <i className="fas fa-user-graduate"></i>
-                                <div>
-                                    <h4>Requirements</h4>
-                                    <p>Open to all DVHS students<br />No experience required!</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                     <div className="contact-socials">
                         <h3>Join our Community</h3>
                         <p>Connect with us on our platforms!</p>
                         <div className="social-links-contact">
-                        <a href="https://discord.gg/ap65wjgm4k" target="_blank" rel="noopener noreferrer" className="social-btn discord">
-                                <i className="fab fa-discord"></i>
-                                <span>Join our Discord Server</span>
-                        </a>
-                        <a href="https://www.instagram.com/dvhsjazzclub" target="_blank" rel="noopener noreferrer" className="social-btn instagram">
-                                <i className="fab fa-instagram"></i>
-                                <span>Follow on Instagram</span>
-                        </a>
-                        <a href="mailto:dvjazzclub@gmail.com" className="social-btn email">
-                                <i className="fas fa-envelope"></i>
-                                <span>Email the Club</span>
-                        </a>
+                            {socialLinks.map(({ href, icon, label, className }) => (
+                                <a 
+                                    key={label}
+                                    href={href} 
+                                    target="_blank" 
+                                    rel="noopener noreferrer" 
+                                    className={`social-btn ${className}`}
+                                    aria-label={label}
+                                >
+                                    <i className={icon} aria-hidden="true"></i>
+                                    <span>{label}</span>
+                                </a>
+                            ))}
                         </div>
-                        <p className="contact-email-display">Or, email us directly at: <strong>dvjazzclub@gmail.com</strong></p>
+                        <p className="contact-email-display">
+                            Or, email us directly at: <strong>dvjazzclub@gmail.com</strong>
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
     );
-};
+});
+
+Join.displayName = 'Join';
 
 export default Join; 

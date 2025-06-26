@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo, useMemo } from 'react';
 
-const About = ({ aboutImage }) => {
+const About = memo(({ aboutImage }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
     const [imageError, setImageError] = useState(false);
 
@@ -19,6 +19,25 @@ const About = ({ aboutImage }) => {
         }
     }, [aboutImage]);
 
+    // Extract features for better maintainability
+    const features = useMemo(() => [
+        {
+            icon: 'fas fa-book-reader',
+            title: 'Music Theory & Improv',
+            description: 'Learn the fundamentals and the art of spontaneous creation'
+        },
+        {
+            icon: 'fas fa-users',
+            title: 'Community Feel',
+            description: 'Join a small, welcoming group of passionate musicians'
+        },
+        {
+            icon: 'fas fa-star',
+            title: 'Performance Opportunities',
+            description: 'Share your talent at school and in the community'
+        }
+    ], []);
+
     return (
         <section id="about" className="about">
             <div className="container">
@@ -32,21 +51,13 @@ const About = ({ aboutImage }) => {
                         <p>The Dougherty Valley High School Jazz Club is a vibrant, close-knit community of student musicians passionate about jazz. We focus on teaching music theory and improvisation, creating an environment where creativity flourishes and friendships are forged through the universal language of music.</p>
                         <p>It's not a huge club, and we like it that way. Everyone who shows up becomes part of our musical family. Whether you're a seasoned musician or just starting, our club welcomes all skill levels to learn, jam, and grow with us.</p>
                         <div className="features">
-                            <div className="feature">
-                                <i className="fas fa-book-reader"></i>
-                                <h4>Music Theory & Improv</h4>
-                                <p>Learn the fundamentals and the art of spontaneous creation</p>
-                            </div>
-                            <div className="feature">
-                                <i className="fas fa-users"></i>
-                                <h4>Community Feel</h4>
-                                <p>Join a small, welcoming group of passionate musicians</p>
-                            </div>
-                            <div className="feature">
-                                <i className="fas fa-star"></i>
-                                <h4>Performance Opportunities</h4>
-                                <p>Share your talent at school and in the community</p>
-                            </div>
+                            {features.map(({ icon, title, description }) => (
+                                <div key={title} className="feature">
+                                    <i className={icon} aria-hidden="true"></i>
+                                    <h4>{title}</h4>
+                                    <p>{description}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                     <div className="about-image">
@@ -85,6 +96,8 @@ const About = ({ aboutImage }) => {
             </div>
         </section>
     );
-};
+});
+
+About.displayName = 'About';
 
 export default About; 
