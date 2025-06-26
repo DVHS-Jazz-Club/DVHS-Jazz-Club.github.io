@@ -204,9 +204,9 @@ const ImageCropModal = ({ imageSrc, onCancel, onCropComplete, aspect = 16 / 9 })
             </label>
             <input
               type="range"
-              min="0"
+              min="-180"
               max="180"
-              value={Math.abs(rotation % 180)}
+              value={rotation}
               onChange={handleFineRotation}
               style={{ 
                 flex: '1',
@@ -225,7 +225,7 @@ const ImageCropModal = ({ imageSrc, onCancel, onCropComplete, aspect = 16 / 9 })
               textAlign: 'center',
               fontWeight: 'bold'
             }}>
-              {Math.abs(rotation % 180)}°
+              {rotation}°
             </span>
           </div>
         </div>
