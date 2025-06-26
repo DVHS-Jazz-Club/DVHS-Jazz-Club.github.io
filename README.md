@@ -29,11 +29,12 @@ The admin panel is organized into sections that match the website's content.
 
 #### Managing Performances
 - **Upcoming & Past Performances**: Add, edit, or delete performances in their respective sections.
-- **Editing**: Click "Edit" to open a form where you can change details like the date, time, location, and description. You can also assign images to a performance from the Image Library.
+- **Editing**: Click "Edit" to open a form where you can change details like the date, time, location, and description. You can also assign images to a performance from the Image Library by selecting one or more images to be displayed in the event's gallery modal.
 
 #### Managing Images
 - **The Image Library**: This is the central hub for all website images. Forget manually uploading to GitHub—do it all from here.
 - **Uploading**: Click **"Upload New Image"**. This uses a third-party service (`imgbb.com`) to host the image, so you don't need to worry about repository space.
+- **Cropping**: When uploading, you'll be prompted with a cropping tool. You can zoom, rotate, and select the exact part of the image to use. All images are cropped to a 16:9 aspect ratio for consistent display across the site.
 - **Naming**: Images are identified by name. You can rename them at any time for clarity.
 - **Assigning Images**: In the "Page Content Assignment" section, simply click on an image's name to assign it to the "About Us" page or the "Homepage Hero Slideshow".
 
