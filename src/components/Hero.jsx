@@ -31,7 +31,7 @@ const Hero = ({ heroImages }) => {
 
     useEffect(() => {
         if (heroImages.length > 1) {
-            const intervalId = setInterval(nextImage, 7000);
+            const intervalId = setInterval(nextImage, 1500);
             return () => clearInterval(intervalId);
         }
     }, [heroImages.length, nextImage]);

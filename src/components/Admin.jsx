@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import PerformanceForm from './PerformanceForm';
+import ImageCropModal from './ImageCropModal';
 
 const Admin = () => {
     const [password, setPassword] = useState('');
@@ -16,6 +17,11 @@ const Admin = () => {
 
     // State for adding a new hero image
     const [newImageUrl, setNewImageUrl] = useState('');
+
+    // Cropping modal state
+    const [isCropModalVisible, setIsCropModalVisible] = useState(false);
+    const [selectedImageFile, setSelectedImageFile] = useState(null);
+    const [selectedImagePreview, setSelectedImagePreview] = useState(null);
 
     const correctPassword = 'jazzisawesome';
 
@@ -84,15 +90,38 @@ const Admin = () => {
         }
     };
 
-    // --- Hero Image Handlers ---
-    const handleImageUpload = async (e) => {
+    // --- Image Upload and Cropping Handlers ---
+    const handleImageUpload = (e) => {
         const file = e.target.files[0];
         if (!file) return;
 
-        const formData = new FormData();
-        formData.append('image', file);
+        // Create a preview URL for the cropping modal
+        const previewUrl = URL.createObjectURL(file);
+        setSelectedImageFile(file);
+        setSelectedImagePreview(previewUrl);
+        setIsCropModalVisible(true);
+        
+        // Reset the file input
+        e.target.value = '';
+    };
 
+    const handleCropCancel = () => {
+        setIsCropModalVisible(false);
+        setSelectedImageFile(null);
+        setSelectedImagePreview(null);
+    };
+
+    const handleCropComplete = async (croppedBlob) => {
         try {
+            // Create a file from the cropped blob
+            const croppedFile = new File([croppedBlob], selectedImageFile.name, {
+                type: 'image/jpeg',
+                lastModified: Date.now(),
+            });
+
+            const formData = new FormData();
+            formData.append('image', croppedFile);
+
             const response = await fetch(`https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBB_API_KEY}`, {
                 method: 'POST',
                 body: formData,
@@ -103,21 +132,29 @@ const Admin = () => {
             if (result.success) {
                 const newImage = {
                     url: result.data.url,
-                    name: file.name // Use the original filename as a default name
+                    name: selectedImageFile.name
                 };
                 const currentPool = Array.isArray(data.imagePool) ? data.imagePool : [];
                 const updatedImagePool = [...currentPool, newImage];
                 setData(prevData => ({ ...prevData, imagePool: updatedImagePool }));
-                alert('Image uploaded successfully!');
+                alert('Image cropped and uploaded successfully!');
             } else {
                 throw new Error(result.error.message);
             }
         } catch (uploadError) {
             console.error('Image upload failed:', uploadError);
             alert(`Image upload failed: ${uploadError.message}`);
+        } finally {
+            // Clean up
+            setIsCropModalVisible(false);
+            setSelectedImageFile(null);
+            if (selectedImagePreview) {
+                URL.revokeObjectURL(selectedImagePreview);
+                setSelectedImagePreview(null);
+            }
         }
     };
-    
+
     const handleDeleteImage = (indexToDelete) => {
         if (window.confirm("Are you sure you want to delete this image? It will be removed from all pages and performances.")) {
             const imageUrlToDelete = data.imagePool[indexToDelete].url;
@@ -235,7 +272,7 @@ const Admin = () => {
                 {/* Image Library Section */}
                 <div className="admin-section">
                     <h3>Image Library</h3>
-                    <p>Upload and manage all images for the website here. Uploaded images will become available to use on all pages.</p>
+                    <p>Upload and manage all images for the website here. Images will be automatically cropped to 16:9 aspect ratio for consistent display across the site.</p>
                      <div className="add-image-form">
                          <label htmlFor="image-upload" className="btn btn-primary">
                             Upload New Image
@@ -352,6 +389,15 @@ const Admin = () => {
                     onSave={handleSavePerformance}
                     onCancel={() => setIsFormVisible(false)}
                     imagePool={data.imagePool || []}
+                />
+            )}
+            
+            {isCropModalVisible && selectedImagePreview && (
+                <ImageCropModal
+                    imageSrc={selectedImagePreview}
+                    onCancel={handleCropCancel}
+                    onCropComplete={handleCropComplete}
+                    aspect={16/9}
                 />
             )}
         </>
