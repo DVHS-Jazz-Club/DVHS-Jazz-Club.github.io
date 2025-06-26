@@ -1,4 +1,24 @@
+import { useState, useEffect } from 'react';
+
 const About = ({ aboutImage }) => {
+    const [imageLoaded, setImageLoaded] = useState(false);
+    const [imageError, setImageError] = useState(false);
+
+    useEffect(() => {
+        if (aboutImage) {
+            const img = new window.Image();
+            img.onload = () => {
+                setImageLoaded(true);
+                setImageError(false);
+            };
+            img.onerror = () => {
+                setImageError(true);
+                setImageLoaded(false);
+            };
+            img.src = aboutImage;
+        }
+    }, [aboutImage]);
+
     return (
         <section id="about" className="about">
             <div className="container">
@@ -31,7 +51,29 @@ const About = ({ aboutImage }) => {
                     </div>
                     <div className="about-image">
                         {aboutImage ? (
-                            <img src={aboutImage} alt="Dougherty Valley Jazz Club" />
+                            <>
+                                {!imageLoaded && !imageError && (
+                                    <div className="skeleton-about-image"></div>
+                                )}
+                                <img 
+                                    src={aboutImage} 
+                                    alt="Dougherty Valley Jazz Club" 
+                                    loading="lazy"
+                                    style={{ 
+                                        display: imageLoaded ? 'block' : 'none',
+                                        opacity: imageLoaded ? 1 : 0,
+                                        transition: 'opacity 0.3s ease-in'
+                                    }}
+                                    onLoad={() => setImageLoaded(true)}
+                                    onError={() => setImageError(true)}
+                                />
+                                {imageError && (
+                                    <div className="image-placeholder">
+                                        <i className="fas fa-image"></i>
+                                        <p>Jazz Club Rehearsal</p>
+                                    </div>
+                                )}
+                            </>
                         ) : (
                             <div className="image-placeholder">
                                 <i className="fas fa-image"></i>
