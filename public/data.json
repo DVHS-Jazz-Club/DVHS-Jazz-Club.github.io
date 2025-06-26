@@ -3,7 +3,8 @@
   "heroImages": [
     "https://i.ibb.co/YTDYg5kz/Screenshot-2025-06-20-at-11-41-46-PM.png",
     "https://picsum.photos/seed/jazzclub/800/600",
-    "https://i.ibb.co/m5Gz3rMH/IMG-2199.jpg"
+    "https://i.ibb.co/m5Gz3rMH/IMG-2199.jpg",
+    "https://i.ibb.co/nvY3D0r/Screenshot-2025-06-24-at-8-05-40-PM.jpg"
   ],
   "imagePool": [
     {
@@ -17,6 +18,10 @@
     {
       "url": "https://i.ibb.co/m5Gz3rMH/IMG-2199.jpg",
       "name": "Last Access Meeting 2025"
+    },
+    {
+      "url": "https://i.ibb.co/nvY3D0r/Screenshot-2025-06-24-at-8-05-40-PM.jpg",
+      "name": "Test Balatro image"
     }
   ],
   "officers": {
