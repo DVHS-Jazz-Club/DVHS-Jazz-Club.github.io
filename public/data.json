@@ -1,29 +1,42 @@
 {
-  "aboutImage": "https://i.ibb.co/JjRYZRkH/Officers.jpg",
+  "aboutImage": "https://i.ibb.co/wFDrJ6T6/Officers.jpg",
   "heroImages": [
-    "https://i.ibb.co/JjRYZRkH/Officers.jpg",
-    "https://i.ibb.co/m5Gz3rMH/IMG-2199.jpg"
+    "https://i.ibb.co/m5Gz3rMH/IMG-2199.jpg",
+    "https://i.ibb.co/wFDrJ6T6/Officers.jpg",
+    "https://i.ibb.co/v4N9w1xR/Jamsession1.jpg",
+    "https://i.ibb.co/gMkXhwRb/seniorcenterperformance.jpg",
+    "https://i.ibb.co/392bbdjb/drugsandfent.jpg",
+    "https://i.ibb.co/wrFVgfpL/Bluepearl.jpg",
+    "https://i.ibb.co/xSyD1Z6J/Performance.jpg"
   ],
   "imagePool": [
-    {
-      "url": "https://picsum.photos/seed/jazzclub/800/600",
-      "name": "Test Laptop Image"
-    },
-    {
-      "url": "https://i.ibb.co/YTDYg5kz/Screenshot-2025-06-20-at-11-41-46-PM.png",
-      "name": "Test Blackpowder image"
-    },
     {
       "url": "https://i.ibb.co/m5Gz3rMH/IMG-2199.jpg",
       "name": "Last Access Meeting 2025"
     },
     {
-      "url": "https://i.ibb.co/nvY3D0r/Screenshot-2025-06-24-at-8-05-40-PM.jpg",
-      "name": "Test Balatro image"
+      "url": "https://i.ibb.co/wFDrJ6T6/Officers.jpg",
+      "name": "2025officers"
     },
     {
-      "url": "https://i.ibb.co/JjRYZRkH/Officers.jpg",
-      "name": "Officers.jpg"
+      "url": "https://i.ibb.co/v4N9w1xR/Jamsession1.jpg",
+      "name": "fotajam2025"
+    },
+    {
+      "url": "https://i.ibb.co/wrFVgfpL/Bluepearl.jpg",
+      "name": "bluepearl2024.jpg"
+    },
+    {
+      "url": "https://i.ibb.co/gMkXhwRb/seniorcenterperformance.jpg",
+      "name": "November2023seniorcenter"
+    },
+    {
+      "url": "https://i.ibb.co/392bbdjb/drugsandfent.jpg",
+      "name": "2025drugsandfent"
+    },
+    {
+      "url": "https://i.ibb.co/xSyD1Z6J/Performance.jpg",
+      "name": "2023seniorcenter(more)"
     }
   ],
   "officers": {
