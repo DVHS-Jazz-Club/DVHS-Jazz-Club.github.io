@@ -23,18 +23,18 @@ const About = memo(({ aboutImage }) => {
     const features = useMemo(() => [
         {
             icon: 'fas fa-book-reader',
-            title: 'Music Theory & Improv',
-            description: 'Learn the fundamentals and the art of spontaneous creation'
+            title: 'Music Theory',
+            description: 'Learn the fundamentals of jazz music theory! From chords, chord progressions, alterations, scales, and improv lessons, the basics!'
         },
         {
             icon: 'fas fa-users',
             title: 'Community Feel',
-            description: 'Join a small, welcoming group of passionate musicians'
+            description: 'A welcoming group of musicians, we appreciate all students of all skill levels.'
         },
         {
             icon: 'fas fa-star',
             title: 'Performance Opportunities',
-            description: 'Share your talent at school and in the community'
+            description: 'There are plenty of opportunities to express yourself and play as a group!'
         }
     ], []);
 
