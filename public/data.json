@@ -55,6 +55,34 @@
   "performances": {
     "upcoming": [
       {
+        "day": "20",
+        "month": "MAY",
+        "year": "2025",
+        "title": "Bandquet",
+        "time": "6:00 PM - 9:00 PM",
+        "location": "DVHS Commons",
+        "description": "Performing music for musical chairs at the annual bandquet event.",
+        "tags": [
+          "School Event",
+          "All Welcome"
+        ],
+        "media": []
+      },
+      {
+        "day": "28",
+        "month": "MAY",
+        "year": "2025",
+        "title": "Festival of the Arts (FOTA)",
+        "time": "6:00 PM - 6:30 PM",
+        "location": "DVHS Quad",
+        "description": "Performance at the Festival of the Arts showcasing our jazz music.",
+        "tags": [
+          "School Event",
+          "Festival"
+        ],
+        "media": []
+      },
+      {
         "day": "24",
         "month": "JAN",
         "year": "2026",
@@ -69,6 +97,259 @@
         "media": []
       }
     ],
-    "past": []
+    "past": [
+      {
+        "day": "20",
+        "month": "MAY",
+        "year": "2024",
+        "title": "Bandquet 2024",
+        "time": "6:30 PM - 8:00 PM",
+        "location": "DVHS",
+        "description": "Celebration of band program with musical performances, awards, and Jazz Club providing live music for musical chairs.",
+        "tags": [
+          "School Event",
+          "Bandquet"
+        ],
+        "media": []
+      },
+      {
+        "day": "22",
+        "month": "MAY",
+        "year": "2024",
+        "title": "FOTA 2024",
+        "time": "4:00 PM - 4:30 PM",
+        "location": "DVHS",
+        "description": "Festival of the Arts performance with Acapella Club (Misty).",
+        "tags": [
+          "School Event",
+          "Festival"
+        ],
+        "media": []
+      },
+      {
+        "day": "05",
+        "month": "APR",
+        "year": "2024",
+        "title": "Watermark Performance",
+        "time": "3:30 PM - 4:30 PM",
+        "location": "Watermark at San Ramon",
+        "description": "Performance at senior living facility.",
+        "tags": [
+          "Community Event",
+          "Senior Living"
+        ],
+        "media": []
+      },
+      {
+        "day": "27",
+        "month": "JAN",
+        "year": "2024",
+        "title": "Blue Pearl 2024",
+        "time": "6:00 PM - 10:00 PM",
+        "location": "DVHS Commons",
+        "description": "Performance for consistent rehearsal attendees and audition participants.",
+        "tags": [
+          "Major Event",
+          "All Welcome"
+        ],
+        "media": []
+      },
+      {
+        "day": "03",
+        "month": "DEC",
+        "year": "2023",
+        "title": "Watermark Holiday Performance",
+        "time": "1:00 PM - 2:00 PM",
+        "location": "Watermark at San Ramon",
+        "description": "Holiday performance with multiple combos and Big Band featuring Now's the Time, Four, Lullaby of Birdland, White Christmas, Moanin', Chameleon, Song For My Father, and Jingle Bell Rock.",
+        "tags": [
+          "Community Event",
+          "Holiday Performance"
+        ],
+        "media": []
+      },
+      {
+        "day": "18",
+        "month": "NOV",
+        "year": "2023",
+        "title": "Dublin Performance",
+        "time": "12:00 PM - 1:00 PM",
+        "location": "Dublin",
+        "description": "Performance with multiple combos and Big Band featuring Now's the Time, Moanin', Four, Chameleon, and Cruel Angel's Thesis.",
+        "tags": [
+          "Community Event",
+          "Combo Performance"
+        ],
+        "media": []
+      },
+      {
+        "day": "18",
+        "month": "MAY",
+        "year": "2023",
+        "title": "Last Performance of the Year",
+        "time": "12:00 PM - 1:00 PM",
+        "location": "Behind the 4K",
+        "description": "Combo songs led by Manav, Madhav, and Abhinav - last performance of the year.",
+        "tags": [
+          "School Event",
+          "End of Year"
+        ],
+        "media": []
+      },
+      {
+        "day": "17",
+        "month": "MAY",
+        "year": "2023",
+        "title": "FOTA 2023",
+        "time": "5:30 PM - 6:00 PM",
+        "location": "DVHS Freshman Quad",
+        "description": "Festival of the Arts performance featuring Welcome to the Jungle, Thomas, Combo Song, It's Been a Long Long Time, and Carwash.",
+        "tags": [
+          "School Event",
+          "Festival"
+        ],
+        "media": []
+      },
+      {
+        "day": "15",
+        "month": "MAY",
+        "year": "2023",
+        "title": "Bandquet 2023",
+        "time": "6:00 PM - 9:00 PM",
+        "location": "DVHS",
+        "description": "Play music for live musical chairs at the annual bandquet event.",
+        "tags": [
+          "School Event",
+          "Bandquet"
+        ],
+        "media": []
+      },
+      {
+        "day": "18",
+        "month": "MAY",
+        "year": "2023",
+        "title": "Wellness Center Destress Fest",
+        "time": "12:00 PM - 1:00 PM",
+        "location": "DVHS Wellness Center",
+        "description": "Combo songs led by Madhav, Abhinav, and Manav for the destress fest.",
+        "tags": [
+          "Wellness Event",
+          "School Community"
+        ],
+        "media": []
+      },
+      {
+        "day": "26",
+        "month": "APR",
+        "year": "2023",
+        "title": "Wellness Center Performance",
+        "time": "12:00 PM - 1:00 PM",
+        "location": "DVHS Wellness Center",
+        "description": "Lunchtime performance at the wellness center.",
+        "tags": [
+          "Wellness Event",
+          "School Community"
+        ],
+        "media": []
+      },
+      {
+        "day": "20",
+        "month": "APR",
+        "year": "2023",
+        "title": "Track Senior Night",
+        "time": "3:40 PM - 5:00 PM",
+        "location": "DVHS Stadium",
+        "description": "Performance for track senior night celebration.",
+        "tags": [
+          "School Event",
+          "Senior Night"
+        ],
+        "media": []
+      },
+      {
+        "day": "25",
+        "month": "MAR",
+        "year": "2023",
+        "title": "Relay for Life",
+        "time": "11:30 AM - 1:00 PM",
+        "location": "DV Football Field",
+        "description": "Performance at Relay for Life event supporting cancer research.",
+        "tags": [
+          "Community Event",
+          "Fundraiser"
+        ],
+        "media": []
+      },
+      {
+        "day": "22",
+        "month": "MAR",
+        "year": "2023",
+        "title": "Wellness Center Performance",
+        "time": "12:00 PM - 1:00 PM",
+        "location": "DVHS Wellness Center",
+        "description": "Lunchtime performance at the wellness center.",
+        "tags": [
+          "Wellness Event",
+          "School Community"
+        ],
+        "media": []
+      },
+      {
+        "day": "28",
+        "month": "JAN",
+        "year": "2023",
+        "title": "Senior Home Performance",
+        "time": "2:15 PM - 3:15 PM",
+        "location": "Sunrise Senior Living Danville",
+        "description": "Performance at senior living facility.",
+        "tags": [
+          "Community Event",
+          "Senior Living"
+        ],
+        "media": []
+      },
+      {
+        "day": "21",
+        "month": "JAN",
+        "year": "2023",
+        "title": "Blue Pearl 2023",
+        "time": "6:00 PM - 10:00 PM",
+        "location": "Blue Pearl",
+        "description": "Formal performance requiring tickets and formal attire.",
+        "tags": [
+          "Major Event",
+          "All Welcome"
+        ],
+        "media": []
+      },
+      {
+        "day": "11",
+        "month": "DEC",
+        "year": "2024",
+        "title": "Wellness Center Performance",
+        "time": "12:00 PM - 1:00 PM",
+        "location": "DVHS Wellness Center",
+        "description": "Performed relaxing jazz music to support the school's wellness events and promote mental health awareness.",
+        "tags": [
+          "Wellness Event",
+          "School Community"
+        ],
+        "media": []
+      },
+      {
+        "day": "13",
+        "month": "DEC",
+        "year": "2024",
+        "title": "Quad Lunch Performance",
+        "time": "12:00 PM - 1:00 PM",
+        "location": "DVHS Quad",
+        "description": "Casual lunchtime performance in the school quad, playing upbeat jazz tunes to brighten students' day during lunch break.",
+        "tags": [
+          "School Event",
+          "Lunch Performance"
+        ],
+        "media": []
+      }
+    ]
   }
 }
