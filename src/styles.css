@@ -1274,6 +1274,26 @@ p {
     letter-spacing: 0.5px;
 }
 
+.btn-auto-sort {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.btn-auto-sort:hover {
+    background: linear-gradient(135deg, #218838, #1ea085);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
 .form-field {
     margin-bottom: 1rem;
     text-align: left;
