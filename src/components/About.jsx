@@ -42,8 +42,8 @@ const About = memo(({ aboutImage }) => {
         <section id="about" className="about">
             <div className="container">
                 <div className="section-header">
-                    <h2>About Our Jazz Club</h2>
-                    <p>Discovering the art of jazz through collaboration, creativity, and community</p>
+                    <h2>About Jazz Club</h2>
+                    <p>Through building a tight-knit community, we spread the love of jazz.</p>
                 </div>
                 <div className="about-content">
                     <div className="about-text">
