@@ -112,7 +112,7 @@ const Modal = memo(({ show, onClose, title, images }) => {
                             );
                         })
                     ) : (
-                        <p>No images or videos available for this performance.</p>
+                        <p>No images or videos currently available for this performance.</p>
                     )}
                 </div>
             </div>
