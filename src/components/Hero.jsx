@@ -110,11 +110,11 @@ const Hero = memo(({ heroImages }) => {
         <section id="home" className={`hero ${!firstImageLoaded ? 'hero-loading' : ''} ${isTransitioning ? 'hero-transitioning' : ''}`}>
             <div className="hero-content">
                 <h1 className="hero-title">Dougherty Valley High School Jazz Club</h1>
-                <p className="hero-subtitle">Where Music Meets Passion</p>
-                <p className="hero-description">Join our talented student musicians as we explore the world of jazz, perform amazing music, and create unforgettable experiences together.</p>
+                <p className="hero-subtitle">Where Jazz Meets Passion!</p>
+                <p className="hero-description">Join us, jazz connoisseurs, as we explore the world of jazz, fundamentally and practically, whilst performing amazing music!</p>
                 <div className="hero-buttons">
                     <SmoothScrollLink to="#performances" className="btn btn-primary">View Performances</SmoothScrollLink>
-                    <SmoothScrollLink to="#join" className="btn btn-secondary">Join The Club</SmoothScrollLink>
+                    <SmoothScrollLink to="#join" className="btn btn-secondary">Join The Club!</SmoothScrollLink>
                 </div>
             </div>
             <div className="hero-overlay"></div>
