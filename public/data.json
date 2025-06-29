@@ -133,7 +133,7 @@
         "title": "Watermark Performance",
         "time": "3:30 PM - 4:30 PM",
         "location": "Watermark at San Ramon",
-        "description": "Performance at senior living facility.",
+        "description": "Jazz combo performance at Watermark senior living facility.",
         "tags": [
           "Community Event",
           "Senior Living"
@@ -147,7 +147,7 @@
         "title": "Blue Pearl 2024",
         "time": "6:00 PM - 10:00 PM",
         "location": "DVHS Commons",
-        "description": "Performance for consistent rehearsal attendees and audition participants.",
+        "description": "Annual Blue Pearl performance for the DVHS community.",
         "tags": [
           "Major Event",
           "All Welcome"
@@ -161,7 +161,7 @@
         "title": "Watermark Holiday Performance",
         "time": "1:00 PM - 2:00 PM",
         "location": "Watermark at San Ramon",
-        "description": "Holiday performance with multiple combos and Big Band featuring Now's the Time, Four, Lullaby of Birdland, White Christmas, Moanin', Chameleon, Song For My Father, and Jingle Bell Rock.",
+        "description": "Holiday jazz performance at Watermark senior living facility.",
         "tags": [
           "Community Event",
           "Holiday Performance"
@@ -175,7 +175,7 @@
         "title": "Dublin Performance",
         "time": "12:00 PM - 1:00 PM",
         "location": "Dublin",
-        "description": "Performance with multiple combos and Big Band featuring Now's the Time, Moanin', Four, Chameleon, and Cruel Angel's Thesis.",
+        "description": "Community jazz performance in Dublin.",
         "tags": [
           "Community Event",
           "Combo Performance"
@@ -189,7 +189,7 @@
         "title": "Last Performance of the Year",
         "time": "12:00 PM - 1:00 PM",
         "location": "Behind the 4K",
-        "description": "Combo songs led by Manav, Madhav, and Abhinav - last performance of the year.",
+        "description": "End-of-year combo performance for the DVHS community.",
         "tags": [
           "School Event",
           "End of Year"
@@ -203,7 +203,7 @@
         "title": "FOTA 2023",
         "time": "5:30 PM - 6:00 PM",
         "location": "DVHS Freshman Quad",
-        "description": "Festival of the Arts performance featuring Welcome to the Jungle, Thomas, Combo Song, It's Been a Long Long Time, and Carwash.",
+        "description": "Festival of the Arts performance at DVHS.",
         "tags": [
           "School Event",
           "Festival"
@@ -217,24 +217,10 @@
         "title": "Bandquet 2023",
         "time": "6:00 PM - 9:00 PM",
         "location": "DVHS",
-        "description": "Play music for live musical chairs at the annual bandquet event.",
+        "description": "Annual Bandquet celebration with live music and games.",
         "tags": [
           "School Event",
           "Bandquet"
-        ],
-        "media": []
-      },
-      {
-        "day": "18",
-        "month": "MAY",
-        "year": "2023",
-        "title": "Wellness Center Destress Fest",
-        "time": "12:00 PM - 1:00 PM",
-        "location": "DVHS Wellness Center",
-        "description": "Combo songs led by Madhav, Abhinav, and Manav for the destress fest.",
-        "tags": [
-          "Wellness Event",
-          "School Community"
         ],
         "media": []
       },
@@ -245,7 +231,7 @@
         "title": "Wellness Center Performance",
         "time": "12:00 PM - 1:00 PM",
         "location": "DVHS Wellness Center",
-        "description": "Lunchtime performance at the wellness center.",
+        "description": "Lunchtime jazz performance at the wellness center for students and staff.",
         "tags": [
           "Wellness Event",
           "School Community"
@@ -259,7 +245,7 @@
         "title": "Track Senior Night",
         "time": "3:40 PM - 5:00 PM",
         "location": "DVHS Stadium",
-        "description": "Performance for track senior night celebration.",
+        "description": "Jazz performance for track senior night celebration.",
         "tags": [
           "School Event",
           "Senior Night"
@@ -273,7 +259,7 @@
         "title": "Relay for Life",
         "time": "11:30 AM - 1:00 PM",
         "location": "DV Football Field",
-        "description": "Performance at Relay for Life event supporting cancer research.",
+        "description": "Spring community fundraiser performance for Relay for Life.",
         "tags": [
           "Community Event",
           "Fundraiser"
@@ -287,7 +273,7 @@
         "title": "Wellness Center Performance",
         "time": "12:00 PM - 1:00 PM",
         "location": "DVHS Wellness Center",
-        "description": "Lunchtime performance at the wellness center.",
+        "description": "Lunchtime jazz performance at the wellness center for students and staff.",
         "tags": [
           "Wellness Event",
           "School Community"
@@ -301,7 +287,7 @@
         "title": "Senior Home Performance",
         "time": "2:15 PM - 3:15 PM",
         "location": "Sunrise Senior Living Danville",
-        "description": "Performance at senior living facility.",
+        "description": "Jazz performance at Sunrise Senior Living in Danville.",
         "tags": [
           "Community Event",
           "Senior Living"
@@ -315,7 +301,7 @@
         "title": "Blue Pearl 2023",
         "time": "6:00 PM - 10:00 PM",
         "location": "Blue Pearl",
-        "description": "Formal performance requiring tickets and formal attire.",
+        "description": "Annual Blue Pearl performance for the DVHS community.",
         "tags": [
           "Major Event",
           "All Welcome"
