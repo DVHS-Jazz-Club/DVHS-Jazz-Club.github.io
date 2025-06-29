@@ -2,12 +2,12 @@
   "aboutImage": "https://i.ibb.co/wFDrJ6T6/Officers.jpg",
   "heroImages": [
     "https://i.ibb.co/m5Gz3rMH/IMG-2199.jpg",
-    "https://i.ibb.co/wFDrJ6T6/Officers.jpg",
     "https://i.ibb.co/v4N9w1xR/Jamsession1.jpg",
     "https://i.ibb.co/gMkXhwRb/seniorcenterperformance.jpg",
     "https://i.ibb.co/392bbdjb/drugsandfent.jpg",
     "https://i.ibb.co/wrFVgfpL/Bluepearl.jpg",
-    "https://i.ibb.co/xSyD1Z6J/Performance.jpg"
+    "https://i.ibb.co/xSyD1Z6J/Performance.jpg",
+    "https://i.ibb.co/35ZqmD5c/Screenshot-2025-06-28-at-10-57-32-PM.jpg"
   ],
   "imagePool": [
     {
@@ -37,6 +37,10 @@
     {
       "url": "https://i.ibb.co/xSyD1Z6J/Performance.jpg",
       "name": "2023seniorcenter(more)"
+    },
+    {
+      "url": "https://i.ibb.co/35ZqmD5c/Screenshot-2025-06-28-at-10-57-32-PM.jpg",
+      "name": "freakyahhh"
     }
   ],
   "officers": {
