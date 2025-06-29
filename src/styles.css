@@ -410,6 +410,10 @@ p {
     font-size: 5rem;
 }
 
+.feature b, .feature strong {
+    display: block;
+    margin-bottom: 0.5em;
+}
 
 /* Performances Section */
 .performances {
