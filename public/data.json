@@ -65,6 +65,35 @@
         "media": []
       }
     ],
-    "past": []
+    "past": [
+      {
+        "day": "11",
+        "month": "DEC",
+        "year": "2024",
+        "title": "Wellness Center Performance",
+        "time": "12:00 PM - 1:00 PM",
+        "location": "DVHS Wellness Center",
+        "description": "Performed relaxing jazz music to support the school's wellness events and promote mental health awareness.",
+        "tags": [
+          "Wellness Event",
+          "School Community"
+        ],
+        "media": []
+      },
+      {
+        "day": "13",
+        "month": "DEC",
+        "year": "2024",
+        "title": "Quad Lunch Performance",
+        "time": "12:00 PM - 1:00 PM",
+        "location": "DVHS Quad",
+        "description": "Casual lunchtime performance in the school quad, playing upbeat jazz tunes to brighten students' day during lunch break.",
+        "tags": [
+          "School Event",
+          "Lunch Performance"
+        ],
+        "media": []
+      }
+    ]
   }
 }
