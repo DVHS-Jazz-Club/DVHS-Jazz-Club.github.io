@@ -49,7 +49,22 @@
     "facultyAdvisor": "Teri Musiel"
   },
   "performances": {
-    "upcoming": [],
+    "upcoming": [
+      {
+        "day": "24",
+        "month": "JAN",
+        "year": "2026",
+        "title": "Blue Pearl",
+        "time": "6:00 PM - 10:00 PM",
+        "location": "TBD",
+        "description": "Join us for an evening of jazz at Blue Pearl. More details to be announced.",
+        "tags": [
+          "Major Event",
+          "All Welcome"
+        ],
+        "media": []
+      }
+    ],
     "past": []
   }
 }
