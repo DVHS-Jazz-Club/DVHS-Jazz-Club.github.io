@@ -416,11 +416,16 @@ p {
 }
 
 .feature-title {
-    display: block;
     font-weight: bold;
     font-size: 1.25rem;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.7em;
     line-height: 1.2;
+}
+
+.feature-description {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
 }
 
 /* Performances Section */
