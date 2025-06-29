@@ -415,6 +415,14 @@ p {
     margin-bottom: 0.5em;
 }
 
+.feature-title {
+    display: block;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 0.5em;
+    line-height: 1.2;
+}
+
 /* Performances Section */
 .performances {
     background-color: #fff;

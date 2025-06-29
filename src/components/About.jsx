@@ -54,7 +54,7 @@ const About = memo(({ aboutImage }) => {
                             {features.map(({ icon, title, description }) => (
                                 <div key={title} className="feature">
                                     <i className={icon} aria-hidden="true"></i>
-                                    <h4>{title}</h4>
+                                    <span className="feature-title">{title}</span>
                                     <p>{description}</p>
                                 </div>
                             ))}
