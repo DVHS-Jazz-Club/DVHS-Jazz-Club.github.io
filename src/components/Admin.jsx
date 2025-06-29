@@ -220,6 +220,75 @@ const Admin = () => {
             .catch(() => alert("Failed to copy data. Please copy it manually."));
     }, [data]);
 
+    // Auto-sort performances based on dates
+    const handleAutoSortPerformances = useCallback(() => {
+        if (!data || !data.performances) return;
+        
+        // Helper function to parse date from day/month/year fields
+        const parsePerformanceDate = (perf) => {
+            if (!perf.day || !perf.month || !perf.year) {
+                return new Date(0); // Invalid date
+            }
+            
+            // Convert month abbreviation to number
+            const monthMap = {
+                'JAN': 0, 'FEB': 1, 'MAR': 2, 'APR': 3, 'MAY': 4, 'JUN': 5,
+                'JUL': 6, 'AUG': 7, 'SEP': 8, 'OCT': 9, 'NOV': 10, 'DEC': 11
+            };
+            
+            const month = monthMap[perf.month.toUpperCase()];
+            if (month === undefined) {
+                return new Date(0); // Invalid month
+            }
+            
+            return new Date(parseInt(perf.year), month, parseInt(perf.day));
+        };
+
+        const allPerformances = [...(data.performances.upcoming || []), ...(data.performances.past || [])];
+        const now = new Date();
+        now.setHours(0, 0, 0, 0);
+
+        const upcomingPerformances = [];
+        const pastPerformances = [];
+
+        allPerformances.forEach(perf => {
+            const perfDate = parsePerformanceDate(perf);
+            if (perfDate >= now) {
+                upcomingPerformances.push(perf);
+            } else {
+                pastPerformances.push(perf);
+            }
+        });
+
+        // Sort upcoming performances by date (earliest first)
+        upcomingPerformances.sort((a, b) => {
+            const dateA = parsePerformanceDate(a);
+            const dateB = parsePerformanceDate(b);
+            return dateA - dateB;
+        });
+
+        // Sort past performances by date (most recent first)
+        pastPerformances.sort((a, b) => {
+            const dateA = parsePerformanceDate(a);
+            const dateB = parsePerformanceDate(b);
+            return dateB - dateA;
+        });
+
+        const updatedPerformances = {
+            upcoming: upcomingPerformances,
+            past: pastPerformances
+        };
+
+        setData(prevData => ({ ...prevData, performances: updatedPerformances }));
+        
+        const movedCount = Math.abs(
+            (data.performances.upcoming?.length || 0) + (data.performances.past?.length || 0) - 
+            (upcomingPerformances.length + pastPerformances.length)
+        );
+        
+        alert(`Auto-sort completed! ${movedCount} performances were re-categorized based on their dates.`);
+    }, [data]);
+
     // Memoize safe data arrays
     const safeUpcomingPerformances = useMemo(() => data?.performances?.upcoming || [], [data?.performances?.upcoming]);
     const safePastPerformances = useMemo(() => data?.performances?.past || [], [data?.performances?.past]);
@@ -340,6 +409,16 @@ const Admin = () => {
                         ))}
                     </div>
                     <button onClick={() => handleOpenForm('past')} className="btn btn-primary">Add Past Performance</button>
+                </div>
+
+                {/* Auto-Sort Performances Section */}
+                <div className="admin-section">
+                    <h3>Auto-Sort Performances</h3>
+                    <p>
+                        Click the button below to automatically categorize all performances as "upcoming" or "past" based on their dates. 
+                        This will also sort them chronologically within each category.
+                    </p>
+                    <button onClick={handleAutoSortPerformances} className="btn btn-auto-sort">Auto-Sort by Date</button>
                 </div>
 
                 {/* Image Library Section */}

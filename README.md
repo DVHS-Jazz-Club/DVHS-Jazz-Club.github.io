@@ -30,6 +30,7 @@ The admin panel is organized into sections that match the website's content.
 #### Managing Performances
 - **Upcoming & Past Performances**: Add, edit, or delete performances in their respective sections.
 - **Editing**: Click "Edit" to open a form where you can change details like the date, time, location, and description. You can also assign images to a performance from the Image Library by selecting one or more images to be displayed in the event's gallery modal.
+- **Auto-Sorting**: Use the "Auto-Sort by Date" button to automatically categorize all performances as "upcoming" or "past" based on their dates. This feature also sorts performances chronologically within each category (earliest upcoming first, most recent past first).
 
 #### Managing Images
 - **The Image Library**: This is the central hub for all website images. Forget manually uploading to GitHub—do it all from here.
