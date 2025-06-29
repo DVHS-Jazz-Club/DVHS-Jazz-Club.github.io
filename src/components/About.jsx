@@ -48,8 +48,8 @@ const About = memo(({ aboutImage }) => {
                 <div className="about-content">
                     <div className="about-text">
                         <h3>Our Mission & Vibe</h3>
-                        <p>The Dougherty Valley High School Jazz Club is a vibrant, close-knit community of student musicians passionate about jazz. We focus on teaching music theory and improvisation, creating an environment where creativity flourishes and friendships are forged through the universal language of music.</p>
-                        <p>It's not a huge club, and we like it that way. Everyone who shows up becomes part of our musical family. Whether you're a seasoned musician or just starting, our club welcomes all skill levels to learn, jam, and grow with us.</p>
+                        <p>The DVHS Jazz Club is a vibrant, close, and active community of student musicians passionate about jazz. We are focused on creating an environment dedicated to learning and playing. We believe that only through developing a space for all walks of life, from new soloists to jazz band seniors, we all learn a little something and have a bit of fun.</p>
+                        <p>It's not a huge club, and we like it that way. Although we welcome anybody, we especially value those who help contribute to the overall greater good of the club.</p>
                         <div className="features">
                             {features.map(({ icon, title, description }) => (
                                 <div key={title} className="feature">
